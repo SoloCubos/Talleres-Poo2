@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+
+<MenuBar fx:id="myMenuBar" prefHeight="22.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.MenuBarController">
+  <menus>
+    <Menu mnemonicParsing="false" text="Registrar">
+      <items>
+            <MenuItem mnemonicParsing="false" onAction="#crearDepartamento" text="Crear Departamento" />
+            <MenuItem mnemonicParsing="false" onAction="#registrarDocenteCatedra" text="Registar Docente Catedra" />
+            <MenuItem mnemonicParsing="false" onAction="#registrarDocenteOcacional" text="Registar Docente Ocacional" />
+            <MenuItem mnemonicParsing="false" onAction="#registrarDocentePlanta" text="Registar Docente de Planta" />
+            <MenuItem mnemonicParsing="false" onAction="#registrarProgramas" text="Registrar Programa" />
+            <MenuItem mnemonicParsing="false" onAction="#abrirMaterias" text="Abrir Materias" />
+            <MenuItem mnemonicParsing="false" onAction="#registrarGrupos" text="Registrar Grupos" />
+            <MenuItem mnemonicParsing="false" onAction="#crearHorarios" text="Crear Horarios" />
+            <MenuItem mnemonicParsing="false" onAction="#registrarEsudiantes" text="Registrar Estudiantes" />
+            <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
+            
+      </items>
+    </Menu>
+      <Menu mnemonicParsing="false" text="Estudiante">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#listarAsignaturas" text="Listar y Matricular Asignaturas" />
+         </items>
+      </Menu>
+      <Menu mnemonicParsing="false" text="Docente">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#calcularSalarioDocente" text="Calcular Salario Docente" />
+         </items>
+      </Menu>
+  </menus>
+</MenuBar>
