@@ -10,13 +10,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="312.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.IngresarAsignaturaController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.IngresarAsignaturaController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="378.0" minHeight="10.0" prefHeight="289.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="378.0" minHeight="10.0" prefHeight="313.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
        <fx:include source="MenuBar.fxml" />
@@ -27,15 +27,18 @@
                   <Font size="23.0" />
                </font>
             </Text>
-            <Text layoutX="119.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Programa:" />
-            <Text layoutX="126.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código:" />
-            <TextField fx:id="txtCodigo" layoutX="206.0" layoutY="110.0" />
-            <Text layoutX="123.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
-            <TextField fx:id="txtNombre" layoutX="206.0" layoutY="152.0" />
-            <ComboBox fx:id="cmbPrograma" layoutX="206.0" layoutY="66.0" prefWidth="150.0" />
-            <Button fx:id="btnCrear" layoutX="178.0" layoutY="238.0" mnemonicParsing="false" onAction="#crearMaterias" text="Agregar Asignatura" />
-            <Text layoutX="119.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creditos:" />
-            <TextField fx:id="txtCreditos" layoutX="206.0" layoutY="194.0" />
+            <Text layoutX="102.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departamento:" />
+            <ComboBox fx:id="cmbDepartamento" layoutX="206.0" layoutY="58.0" prefWidth="150.0" />
+            <Text layoutX="119.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Programa:" />
+            <ComboBox fx:id="cmbPrograma" layoutX="206.0" layoutY="101.0" prefWidth="150.0" />
+            <Text layoutX="126.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código:" />
+            <TextField fx:id="txtCodigo" layoutX="206.0" layoutY="145.0" />
+            <Text layoutX="123.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
+            <TextField fx:id="txtNombre" layoutX="206.0" layoutY="187.0" />
+            <Text layoutX="119.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creditos:" />
+            <TextField fx:id="txtCreditos" layoutX="206.0" layoutY="229.0" />
+            <Button fx:id="btnCrear" layoutX="178.0" layoutY="267.0" mnemonicParsing="false" onAction="#crearMaterias" text="Agregar Asignatura" />
+            <Button layoutX="380.0" layoutY="58.0" mnemonicParsing="false" onAction="#consultar" text="Consultar" />
          </children></AnchorPane>
    </children>
 </GridPane>

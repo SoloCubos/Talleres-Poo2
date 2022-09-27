@@ -44,7 +44,17 @@ public class IngresarGrupoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cmbMateria.getItems().addAll(u.listaMaterias());
-    }    
+    }
+    
+    @FXML
+    void consultarAsignaturas(ActionEvent event) {
+
+    }
+
+    @FXML
+    void consultarProgramas(ActionEvent event) {
+
+    }
     
     @FXML
     void crearGrupo(ActionEvent event) {

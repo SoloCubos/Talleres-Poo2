@@ -25,7 +25,8 @@ public class IngresarAsignaturaController implements Initializable {
 
     @FXML
     private Button btnCrear;
-
+    @FXML
+    private ComboBox<String> cmbDepartamento;
     @FXML
     private ComboBox<String> cmbPrograma;
 
@@ -46,13 +47,19 @@ public class IngresarAsignaturaController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cmbPrograma.getItems().addAll(u.listaProgramas());
+        cmbDepartamento.getItems().addAll(u.listarDepartamentos());
     }    
     
     @FXML
+    void consultar(ActionEvent event){
+        cmbPrograma.getItems().clear();
+        cmbPrograma.getItems().addAll(u.listaProgramas(cmbDepartamento.getValue()));
+    }
+    
+    @FXML
     void crearMaterias(ActionEvent event) {
-        if(!(cmbPrograma.getValue().isEmpty() || txtCodigo.getText().isEmpty() || txtNombre.getText().isEmpty() || txtCreditos.getText().isEmpty())){
-            u.ingresarAsignatura(txtCodigo.getText(), txtNombre.getText(), Integer.parseInt(txtCreditos.getText()), cmbPrograma.getValue());
+        if(!(cmbDepartamento.getValue().isEmpty() || cmbPrograma.getValue().isEmpty() || txtCodigo.getText().isEmpty() || txtNombre.getText().isEmpty() || txtCreditos.getText().isEmpty())){
+            u.ingresarAsignatura(txtCodigo.getText(), txtNombre.getText(), Integer.parseInt(txtCreditos.getText()), cmbPrograma.getValue(), cmbDepartamento.getValue());
             JOptionPane.showConfirmDialog(null, "Materia Registrada con exito!", "Operacion Exitosa!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             cmbPrograma.setValue("");
             txtCodigo.clear();

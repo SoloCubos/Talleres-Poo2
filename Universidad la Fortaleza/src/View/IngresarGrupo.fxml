@@ -22,18 +22,24 @@
        <fx:include source="MenuBar.fxml" />
       <AnchorPane prefHeight="309.0" prefWidth="475.0" GridPane.rowIndex="1">
          <children>
-            <Text layoutX="103.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digite los Datos del Grupo">
+            <Text layoutX="103.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digite los Datos del Grupo">
                <font>
                   <Font size="23.0" />
                </font>
             </Text>
-            <Text layoutX="116.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Asignatura:" />
-            <ComboBox fx:id="cmbMateria" layoutX="209.0" layoutY="89.0" prefWidth="150.0" />
-            <Text layoutX="121.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Grupo:" />
-            <TextField fx:id="txtIdGrupo" layoutX="209.0" layoutY="133.0" />
-            <Text layoutX="117.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad:" />
-            <TextField fx:id="txtCapacidad" layoutX="209.0" layoutY="175.0" />
-            <Button fx:id="btnCrear" layoutX="149.0" layoutY="231.0" mnemonicParsing="false" onAction="#crearGrupo" text="Agregar Grupo a la Asignatura" />
+            <Text layoutX="111.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departamento:" />
+            <ComboBox fx:id="cmbDepartamento" layoutX="209.0" layoutY="54.0" prefWidth="150.0" />
+            <Text layoutX="121.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Programa:" />
+            <ComboBox fx:id="cmbPrograma" layoutX="209.0" layoutY="92.0" prefWidth="150.0" />
+            <Text layoutX="116.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Asignatura:" />
+            <ComboBox fx:id="cmbMateria" layoutX="209.0" layoutY="131.0" prefWidth="150.0" />
+            <Text layoutX="123.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Grupo:" />
+            <TextField fx:id="txtIdGrupo" layoutX="210.0" layoutY="170.0" />
+            <Text layoutX="117.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad:" />
+            <TextField fx:id="txtCapacidad" layoutX="209.0" layoutY="209.0" />
+            <Button layoutX="371.0" layoutY="54.0" mnemonicParsing="false" onAction="#consultarProgramas" text="Consultar" />
+            <Button fx:id="btnCrear" layoutX="149.0" layoutY="246.0" mnemonicParsing="false" onAction="#crearGrupo" text="Agregar Grupo a la Asignatura" />
+            <Button layoutX="371.0" layoutY="92.0" mnemonicParsing="false" onAction="#consultarAsignaturas" text="Consultar" />
          </children></AnchorPane>
    </children>
 </GridPane>

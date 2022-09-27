@@ -19,7 +19,6 @@ public class Universidad {
     private static Universidad instance;
 
     private Universidad() {
-        
     }
     
     public static Universidad getInstance(){
@@ -106,24 +105,26 @@ public class Universidad {
         
     }
     
-    public ArrayList<String> listaProfesores(){
+    public ArrayList<String> listaProfesores(String Departamento){
         ArrayList<String> profes = new ArrayList<>();
         
         for(int i = 0; i < deps.size(); i++){
             String nombre;
+            if(deps.get(i).getNombre().equals(Departamento)){
+                for(int j = 0; j < deps.get(i).getDocentesCatedra().size(); j++){
+                    nombre = deps.get(i).getDocentesCatedra().get(j).getNombre();
+                    profes.add(j, nombre);
+                }
+                for(int j = 0; j < deps.get(i).getDocentesOcacional().size(); j++){
+                    nombre = deps.get(i).getDocentesOcacional().get(j).getNombre();
+                    profes.add(j, nombre);               
+                }
+                for(int j = 0; j < deps.get(i).getDocentesPlanta().size(); j++){
+                    nombre = deps.get(i).getDocentesPlanta().get(j).getNombre();
+                    profes.add(j, nombre);        
+                }
+            }
             
-            for(int j = 0; j < deps.get(i).getDocentesCatedra().size(); j++){
-                nombre = deps.get(i).getDocentesCatedra().get(j).getNombre();
-                profes.add(j, nombre);
-            }
-            for(int j = 0; j < deps.get(i).getDocentesOcacional().size(); j++){
-                nombre = deps.get(i).getDocentesOcacional().get(j).getNombre();
-                profes.add(j, nombre);               
-            }
-            for(int j = 0; j < deps.get(i).getDocentesPlanta().size(); j++){
-                nombre = deps.get(i).getDocentesPlanta().get(j).getNombre();
-                profes.add(j, nombre);        
-            }
             
         }return profes;
     }
@@ -147,31 +148,34 @@ public class Universidad {
         }
     }
     
-    public ArrayList<String> listaProgramas(){
+    public ArrayList<String> listaProgramas(String Departamento){
         ArrayList<String> p = new ArrayList<>();
         for (int i = 0; i < deps.size(); i++) {
-            for(int j = 0; j < deps.get(i).getProgramas().size(); j++){
-                String pograma;
-                pograma = deps.get(i).getProgramas().get(j).getNombre();
-                p.add(pograma);
-            }
-        }
-        return p;
+            if(deps.get(i).getNombre().equals(Departamento)){
+                for(int j = 0; j < deps.get(i).getProgramas().size(); j++){
+                    String pograma;
+                    pograma = deps.get(i).getProgramas().get(j).getNombre();
+                    p.add(pograma);
+                }
+            }    
+        }return p;
     }
     
-    public void ingresarAsignatura(String codigo, String nombre, int creditos, String programa){
+    public void ingresarAsignatura(String codigo, String nombre, int creditos, String programa, String Departamento){
         Asignatura materia = new Asignatura();
         materia.setCodigo(codigo);
         materia.setNombre(nombre);
         materia.setCreditos(creditos);
         
         for(int i = 0; i < deps.size(); i++){
-            for(int j = 0; j < deps.get(i).getProgramas().size(); j++){
-                if(deps.get(i).getProgramas().get(j).getNombre().equals(programa)){
-                    materia.setPrograma(deps.get(i).getProgramas().get(j));
-                    deps.get(i).getProgramas().get(j).addMaterias(materia);
-                }            
-            }
+            if(deps.get(i).getNombre().equals(Departamento)){
+                for(int j = 0; j < deps.get(i).getProgramas().size(); j++){
+                    if(deps.get(i).getProgramas().get(j).getNombre().equals(programa)){
+                        materia.setPrograma(deps.get(i).getProgramas().get(j));
+                        deps.get(i).getProgramas().get(j).addMaterias(materia);
+                    }            
+                }
+            }   
         }
     }
     

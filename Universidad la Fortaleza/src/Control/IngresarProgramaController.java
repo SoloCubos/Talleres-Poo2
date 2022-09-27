@@ -50,8 +50,13 @@ public class IngresarProgramaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cmbDepartamento.getItems().addAll(u.listarDepartamentos());
-        cmbDirector.getItems().addAll(u.listaProfesores());
+        
     }    
+    @FXML
+    void consultarDocentesDepartamento(ActionEvent event) {
+        cmbDirector.getItems().clear();
+        cmbDirector.getItems().addAll(u.listaProfesores(cmbDepartamento.getValue()));
+    }
     
     @FXML
     void crearPrograma(ActionEvent event) {
