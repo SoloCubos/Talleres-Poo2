@@ -179,7 +179,7 @@ public class Universidad {
         }
     }
     
-    public ArrayList<String> listaMaterias(){
+    public ArrayList<String> listaMaterias(String departamento, String pograma){
         ArrayList<String> m = new ArrayList<>();
         
         for(int i = 0; i < deps.size(); i++){
