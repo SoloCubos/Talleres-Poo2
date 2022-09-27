@@ -9,10 +9,10 @@ package Model;
  *
  * @author solan
  */
-public abstract class Integrante {
-    protected String nombre;
-    protected String apellido;
-    protected String codigo;
+public class Integrante {
+    private String nombre;
+    private String apellido;
+    private String codigo;
 
     public Integrante() {
     }

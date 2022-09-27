@@ -17,37 +17,6 @@ public class Administrativo extends Integrante{
     public Administrativo() {
     }
 
-    @Override
-    public String getNombre() {
-        return nombre;
-    }
-
-    @Override
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    @Override
-    public String getApellido() {
-        return apellido;
-    }
-
-    @Override
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    @Override
-    public String getCodigo() {
-        return codigo;
-    }
-
-    @Override
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-    
-
     public int getAnoIngreso() {
         return anoIngreso;
     }
