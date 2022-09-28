@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Fachada;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -21,6 +22,12 @@ public class CalcularIMCController implements Initializable {
 
     @FXML
     private TextField txtCodigo;
+    
+    private Fachada f;
+
+    public CalcularIMCController() {
+        f = Fachada.getInstance();
+    }
 
     /**
      * Initializes the controller class.

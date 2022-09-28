@@ -18,16 +18,16 @@ import javafx.scene.control.TextField;
  *
  * @author Solan
  */
-public class IngresarCarreraController implements Initializable {
+public class ActualizarSalarioDocenteController implements Initializable {
 
     @FXML
-    private TextField txtNombre;
+    private TextField txtCodigo;
     @FXML
-    private TextField txtCreditosCarrera;
+    private TextField txtNuevoSalario;
     
     private Fachada f;
 
-    public IngresarCarreraController() {
+    public ActualizarSalarioDocenteController() {
         f = Fachada.getInstance();
     }
 
@@ -40,7 +40,7 @@ public class IngresarCarreraController implements Initializable {
     }    
 
     @FXML
-    private void guardar(ActionEvent event) {
+    private void actualizar(ActionEvent event) {
     }
     
 }

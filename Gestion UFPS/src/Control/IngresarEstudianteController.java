@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Fachada;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -32,6 +33,12 @@ public class IngresarEstudianteController implements Initializable {
     private TextField txtCreditosAprobados;
     @FXML
     private ComboBox<String> cmbCarrera;
+    
+    private Fachada f;
+
+    public IngresarEstudianteController() {
+        f = Fachada.getInstance();
+    }
 
     /**
      * Initializes the controller class.

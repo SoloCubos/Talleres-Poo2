@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Fachada;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,13 +18,18 @@ import javafx.scene.control.TextField;
  *
  * @author Solan
  */
-public class ActualizarSalarioDocente implements Initializable {
+public class ActualizarSalarioAdminController implements Initializable {
 
     @FXML
     private TextField txtCodigo;
     @FXML
     private TextField txtNuevoSalario;
+    
+    private Fachada f;
 
+    public ActualizarSalarioAdminController() {
+        f = Fachada.getInstance();
+    }
     /**
      * Initializes the controller class.
      */

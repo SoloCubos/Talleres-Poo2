@@ -19,6 +19,19 @@ public class Fachada {
     private ArrayList <Carrera> carreras =  new ArrayList<>();
     private ArrayList <Estudiante> estudiantes =  new ArrayList<>();
     
+    private static Fachada instance;
+
+    private Fachada() {
+    }
+    
+    public static Fachada getInstance(){
+        if(instance == null)
+            instance = new Fachada();
+        return instance;
+    }
+    
+    
+    
     public void addDocentes(String nombre, String apellido, String codigo, String profesion,
                             String salario, String estatura, String peso){
         Docente d =  new Docente();

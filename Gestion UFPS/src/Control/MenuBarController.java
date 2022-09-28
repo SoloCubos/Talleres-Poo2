@@ -35,6 +35,7 @@ public class MenuBarController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setTitle("Ingresar Administrativos");
 			
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -50,6 +51,7 @@ public class MenuBarController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setTitle("Ingresar Docentes");
 			
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -65,6 +67,7 @@ public class MenuBarController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setTitle("Ingresar Carreras");
 			
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -80,6 +83,7 @@ public class MenuBarController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setTitle("Ingresar Estudiantes");
 			
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -95,6 +99,7 @@ public class MenuBarController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setTitle("Calcular IMC del Docente");
 			
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -110,6 +115,7 @@ public class MenuBarController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setTitle("Actualizar el Salario del Docente");
 			
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -125,6 +131,7 @@ public class MenuBarController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setTitle("Actualizar el Salario del Administrativo");
 			
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -140,6 +147,7 @@ public class MenuBarController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setTitle("Puede matricular Proyecto de Grado?");
 			
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -155,6 +163,7 @@ public class MenuBarController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            stage.setTitle("Acerca de:");
 			
 	} catch (Exception e) {
 		e.printStackTrace();

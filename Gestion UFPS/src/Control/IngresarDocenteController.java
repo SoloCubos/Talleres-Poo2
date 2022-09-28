@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Fachada;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -33,6 +34,12 @@ public class IngresarDocenteController implements Initializable {
     private TextField txtEstatura;
     @FXML
     private TextField txtPeso;
+    
+    private Fachada f;
+
+    public IngresarDocenteController() {
+        f = Fachada.getInstance();
+    }
 
     /**
      * Initializes the controller class.
