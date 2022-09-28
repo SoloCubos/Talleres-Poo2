@@ -71,8 +71,4 @@ public class Administrativo extends Integrante{
         
         System.out.println("El(la) trabajador(a) " + getNombre() + " " + getApellido() + " lleva " + antiguedad + " años trabajando en la UFPS");
     }
-    
-    public void actualizarSalario(){
-        System.out.println("Salario actualizado: " +  salario);
-    }
 }

@@ -73,16 +73,15 @@ public class Estudiante extends Integrante{
     }
     
     
-    public void matricularProyectoGrado(){
-     
-        int creCarrera = 0;
-        
-        creCarrera = carrera.getCreditos();
-        
-        if((creditosCursados / creCarrera) * 100 >= 90 ){
+    public Boolean matricularProyectoGrado(){
+        boolean validar =  false;
+               
+        if((creditosCursados / carrera.getCreditos()) * 100 >= 90 ){
             System.out.println("Estudiante " + getNombre() + ", ya puedes matricular Proyecto de Grado");
+            validar =  true;
         }else{
             System.out.println("Estudiante " + getNombre() + ", NO puedes matricular Proyecto de grado");
-        }
+            validar = false;
+        }return validar;
     }
 }

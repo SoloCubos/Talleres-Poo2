@@ -6,12 +6,68 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author solan
  */
-public class Universidad {
+public class Fachada {
     
+    private ArrayList <Docente> docentes = new ArrayList<>();
+    private ArrayList <Administrativo> admins = new ArrayList<>();
+    private ArrayList <Carrera> carreras =  new ArrayList<>();
+    private ArrayList <Estudiante> estudiantes =  new ArrayList<>();
+    
+    public void addDocentes(String nombre, String apellido, String codigo, String profesion,
+                            String salario, String estatura, String peso){
+        Docente d =  new Docente();
+        d.setNombre(nombre);
+        d.setApellido(apellido);
+        d.setCodigo(codigo);
+        d.setProfesion(profesion);
+        d.setSalario(Integer.parseInt(salario));
+        d.setEstatura(Double.parseDouble(estatura));
+        d.setPeso(Double.parseDouble(peso));
+        
+        docentes.add(d);
+    }
+    
+    public void addAdmins(String nombre, String apellido, String codigo,
+                          String salario, String anoIngreso){
+        Administrativo a = new Administrativo();
+        a.setNombre(nombre);
+        a.setApellido(apellido);
+        a.setCodigo(codigo);
+        a.setSalario(Integer.parseInt(salario));
+        a.setAnoIngreso(Integer.parseInt(anoIngreso));
+        
+        admins.add(a);
+    }
+    
+    public void addCarreras(String nombre, String creditos){
+        Carrera c =  new Carrera();
+        c.setNombre(nombre);
+        c.setCreditos(Integer.parseInt(creditos));
+        
+        carreras.add(c);
+    }
+    
+    public void addEstudiantes(String nombre, String apellido, String codigo,
+                               String carrera, String semestre, String creditos){
+        Estudiante e = new Estudiante();
+        e.setNombre(nombre);
+        e.setApellido(apellido);
+        e.setCodigo(codigo);
+        e.setCreditosCursados(Integer.parseInt(creditos));
+        e.setSemestre(Integer.parseInt(semestre));
+        for(int i = 0; i < carreras.size(); i++){
+            if(carreras.get(i).getNombre().equals(nombre)){
+                e.setCarrera(carreras.get(i));
+            }
+        }
+        estudiantes.add(e);
+    }
     /**
     public static void main(String[] args){
         

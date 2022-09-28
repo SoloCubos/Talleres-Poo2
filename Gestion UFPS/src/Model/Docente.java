@@ -5,6 +5,8 @@
  */
 package Model;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author solan
@@ -88,20 +90,21 @@ public class Docente extends Integrante{
         Imc = peso/(estatura * estatura);
         
         if(Imc < 18.5){
+            JOptionPane.showConfirmDialog(null, "OJO FLACUCHENTO!!!", "Peso Inferior al Normal", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
             System.out.println("Peso Inferior al normal");
         }
         if(Imc >= 18.5 && Imc <= 24.9){
+            JOptionPane.showConfirmDialog(null, "Estas Saludable!", "Peso Normal", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             System.out.println("Peso normal");
         }
         if(Imc >= 25.5 && Imc <= 29.9){
+            JOptionPane.showConfirmDialog(null, "OJO GORDITO!!!", "Peso Superior al Normal", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
             System.out.println("Peso Superior al normal");
         }
         if(Imc >= 30.0){
+            JOptionPane.showConfirmDialog(null, "PONGASE A DIETA!!!", "Obesidad", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
             System.out.println("Obesidad");
         }
-    }
-    public void actualizarSalario(){
-        System.out.println("Salario actualizado: " +  salario);
     }
     
 }
