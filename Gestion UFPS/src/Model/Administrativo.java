@@ -5,6 +5,8 @@
  */
 package Model;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author solan
@@ -68,7 +70,7 @@ public class Administrativo extends Integrante{
         int anoActual = 2022;
         int antiguedad = 0;
         antiguedad = anoActual - anoIngreso;
-        
+        JOptionPane.showConfirmDialog(null, "El(la) trabajador(a) " + getNombre() + " " + getApellido() + " lleva " + antiguedad + " años trabajando en la UFPS", "Operacion Exitosa!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
         System.out.println("El(la) trabajador(a) " + getNombre() + " " + getApellido() + " lleva " + antiguedad + " años trabajando en la UFPS");
     }
 }

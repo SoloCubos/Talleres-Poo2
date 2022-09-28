@@ -169,5 +169,19 @@ public class MenuBarController {
 		e.printStackTrace();
 	}
     }
-    
+     @FXML
+    void calcularVeterania(ActionEvent event) {
+        try {
+            GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("/View/CalcularVeterania.fxml"));
+			
+            Stage stage = (Stage) myMenuBar.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            stage.setTitle("Calcular Veteranía");
+			
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+    }
 }

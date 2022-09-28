@@ -20,6 +20,7 @@
             <MenuItem mnemonicParsing="false" onAction="#actualizarSalarioDocente" text="Actualizar Salario Docente" />
             <MenuItem mnemonicParsing="false" onAction="#actualizarSalarioAdministrativo" text="Actualizar Salario Administrativo" />
             <MenuItem mnemonicParsing="false" onAction="#proyectoGrado" text="Validar si el Estudiante puede Matricular Proyecto de grado" />
+            <MenuItem mnemonicParsing="false" onAction="#calcularVeterania" text="Calcular Veterania" />
       </items>
     </Menu>
     <Menu mnemonicParsing="false" text="Ayuda">

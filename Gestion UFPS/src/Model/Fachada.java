@@ -137,8 +137,23 @@ public class Fachada {
                 JOptionPane.showConfirmDialog(null, "No existe el Docente", "Error!!!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
             }
         }
+        
+            
+        
     }
     
+    public void calcularVeterania(String codigo){
+        if(!admins.isEmpty()){
+                for (int i = 0; i < admins.size(); i++) {
+                    if(admins.get(i).getCodigo().equals(codigo)){
+                        admins.get(i).calcularVeterania();
+                        
+                    }
+                }
+            }else{
+                JOptionPane.showConfirmDialog(null, "No existe el Administrativo", "Error!!!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+            }
+    }
     /**
     public static void main(String[] args){
         
