@@ -1,7 +1,0 @@
-Requerimientos:
-
-1. Diseñar ui para problema 1
-2. Consulta de vehiculo por placa, si el vehiculo no está registrado, debe registrarlo; 
-   en caso contrario, actualizar informacion del vehiculo y del propietario del vehiculo
-3. Guardar Datos de Vehiculo
-4. 
