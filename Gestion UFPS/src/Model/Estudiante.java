@@ -5,6 +5,8 @@
  */
 package Model;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author solan
@@ -74,12 +76,14 @@ public class Estudiante extends Integrante{
     
     
     public Boolean matricularProyectoGrado(){
-        boolean validar =  false;
+        boolean validar = false;
                
         if((creditosCursados / carrera.getCreditos()) * 100 >= 90 ){
+            JOptionPane.showConfirmDialog(null, "Estudiante " + getNombre() + ", ya puedes matricular Proyecto de Grado", "Enhorabuena!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             System.out.println("Estudiante " + getNombre() + ", ya puedes matricular Proyecto de Grado");
             validar =  true;
         }else{
+            JOptionPane.showConfirmDialog(null, "Estudiante " + getNombre() + ", NO puedes matricular Proyecto de grado", "F!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
             System.out.println("Estudiante " + getNombre() + ", NO puedes matricular Proyecto de grado");
             validar = false;
         }return validar;

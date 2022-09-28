@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -41,6 +42,13 @@ public class ActualizarSalarioDocenteController implements Initializable {
 
     @FXML
     private void actualizar(ActionEvent event) {
+        if(!(txtCodigo.getText().isEmpty() || txtNuevoSalario.getText().isEmpty())){
+            f.actualizarSalario(txtCodigo.getText(), txtNuevoSalario.getText(), "D");
+            txtCodigo.clear();
+            txtNuevoSalario.clear();
+        }else{
+            JOptionPane.showConfirmDialog(null, "Error: faltan algunos campos por rellenar", "Error!!!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+        }
     }
     
 }

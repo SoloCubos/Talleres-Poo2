@@ -7,6 +7,7 @@
 package Model;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,9 +30,7 @@ public class Fachada {
             instance = new Fachada();
         return instance;
     }
-    
-    
-    
+
     public void addDocentes(String nombre, String apellido, String codigo, String profesion,
                             String salario, String estatura, String peso){
         Docente d =  new Docente();
@@ -81,6 +80,65 @@ public class Fachada {
         }
         estudiantes.add(e);
     }
+    
+    public ArrayList<String> listarCarreras(){
+        ArrayList<String> lC = new ArrayList<>();
+        for(int i = 0; i < carreras.size(); i++){
+            lC.add(carreras.get(i).getNombre());
+        }return lC;
+    }
+    
+    public void iMC(String codigo){
+        if(!docentes.isEmpty()){
+            for (int i = 0; i < docentes.size(); i++) {
+                if(docentes.get(i).getCodigo().equals(codigo)){
+                    docentes.get(i).calcularImc();
+                }
+            }
+        }else{
+            JOptionPane.showConfirmDialog(null, "Error: el Docente no existe", "Error!!!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void proyectoGrado(String codigo){
+        if(!estudiantes.isEmpty()){
+            for (int i = 0; i < estudiantes.size(); i++) {
+                if(estudiantes.get(i).getCodigo().equals(codigo)){
+                    estudiantes.get(i).matricularProyectoGrado();
+                }
+            }
+        }else{
+            JOptionPane.showConfirmDialog(null, "Error: el Estudiante no existe", "Error!!!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void actualizarSalario(String codigo, String nuevoSalario, String tipo){
+        if(tipo == "D"){
+            if(!docentes.isEmpty()){
+                for (int i = 0; i < docentes.size(); i++) {
+                    if(docentes.get(i).getCodigo().equals(codigo)){
+                        docentes.get(i).setSalario(Integer.parseInt(nuevoSalario));
+                        JOptionPane.showConfirmDialog(null, "Salario del(a) Docente " + docentes.get(i).getNombre() + " actualizado con exito", "Operacion Exitosa!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }else{
+                JOptionPane.showConfirmDialog(null, "No existe el Docente", "Error!!!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }if(tipo == "A"){
+            if(!admins.isEmpty()){
+                for (int i = 0; i < admins.size(); i++) {
+                    if(admins.get(i).getCodigo().equals(codigo)){
+                        admins.get(i).setSalario(Integer.parseInt(nuevoSalario));
+                        JOptionPane.showConfirmDialog(null, "Salario del(a) Administrativo " + admins.get(i).getNombre() + " actualizado con exito", "Operacion Exitosa!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }else{
+                JOptionPane.showConfirmDialog(null, "No existe el Docente", "Error!!!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+    
     /**
     public static void main(String[] args){
         

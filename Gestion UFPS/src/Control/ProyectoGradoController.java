@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -38,6 +39,13 @@ public class ProyectoGradoController implements Initializable {
 
     @FXML
     private void consultar(ActionEvent event) {
+        if(!txtCodigo.getText().isEmpty()){
+            f.proyectoGrado(txtCodigo.getText());
+            
+            txtCodigo.clear();
+        }else{
+            JOptionPane.showConfirmDialog(null, "Por favor dijite su Codigo de Estudiante", "Error!!!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+        }
     }
     
 }

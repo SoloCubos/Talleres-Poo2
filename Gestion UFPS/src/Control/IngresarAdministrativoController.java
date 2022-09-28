@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -39,6 +40,8 @@ public class IngresarAdministrativoController implements Initializable {
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -47,6 +50,21 @@ public class IngresarAdministrativoController implements Initializable {
 
     @FXML
     private void guardar(ActionEvent event) {
+        if(!(txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || txtCodigo.getText().isEmpty() || txtSalario.getText().isEmpty() || txtAnoIngreso.getText().isEmpty())){
+            
+            f.addAdmins(txtNombre.getText(), txtApellido.getText(), txtCodigo.getText(), txtSalario.getText(), txtAnoIngreso.getText());
+            
+            JOptionPane.showConfirmDialog(null, "Administrativo Registrado con exito!", "Operacion Exitosa!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            
+            txtNombre.clear();
+            txtApellido.clear();
+            txtCodigo.clear();
+            txtSalario.clear();
+            txtAnoIngreso.clear();
+            
+        }else{
+            JOptionPane.showConfirmDialog(null, "Error: faltan algunos campos por rellenar", "Error!!!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+        }
     }
     
 }

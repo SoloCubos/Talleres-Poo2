@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -41,6 +42,16 @@ public class IngresarCarreraController implements Initializable {
 
     @FXML
     private void guardar(ActionEvent event) {
-    }
-    
+        if(!(txtNombre.getText().isEmpty() || txtCreditosCarrera.getText().isEmpty())){
+            
+            f.addCarreras(txtNombre.getText(), txtCreditosCarrera.getText());
+            
+            JOptionPane.showConfirmDialog(null, "Carrera Registrada con exito!", "Operacion Exitosa!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            
+            txtNombre.clear();
+            txtCreditosCarrera.clear();
+        }else{
+            JOptionPane.showConfirmDialog(null, "Error: faltan algunos campos por rellenar", "Error!!!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+        }       
+    }   
 }

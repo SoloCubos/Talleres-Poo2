@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -39,6 +40,12 @@ public class CalcularIMCController implements Initializable {
 
     @FXML
     private void calcular(ActionEvent event) {
+        if(!txtCodigo.getText().isEmpty()){
+            f.iMC(txtCodigo.getText());
+            txtCodigo.clear();
+        }else{
+            JOptionPane.showConfirmDialog(null, "Por favor dijite su Codigo de Docente", "Error!!!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+        }
     }
     
 }

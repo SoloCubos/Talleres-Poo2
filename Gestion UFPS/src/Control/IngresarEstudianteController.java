@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -45,11 +46,28 @@ public class IngresarEstudianteController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        cmbCarrera.setPromptText("Seleccione:");
+        cmbCarrera.getItems().clear();
+        cmbCarrera.getItems().addAll(f.listarCarreras());
     }    
 
     @FXML
     private void guardar(ActionEvent event) {
+        if(!(txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || txtCodigo.getText().isEmpty() || 
+             txtCreditosAprobados.getText().isEmpty() || txtSemestre.getText().isEmpty() || cmbCarrera.getValue().isEmpty())){
+            
+            JOptionPane.showConfirmDialog(null, "Estudiante Registrado con exito!", "Operacion Exitosa!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            
+            txtNombre.clear();
+            txtApellido.clear();
+            txtCodigo.clear();
+            txtSemestre.clear();
+            txtCreditosAprobados.clear();
+            cmbCarrera.setValue(null);
+            
+        }else{
+            JOptionPane.showConfirmDialog(null, "Error: faltan algunos campos por rellenar", "Error!!!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+        }
     }
     
 }
