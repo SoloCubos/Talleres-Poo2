@@ -24,8 +24,9 @@ import javax.swing.JOptionPane;
  */
 public class ConsultarVehiculoController implements Initializable {
 
-	@FXML
-	private AnchorPane myAnchorPane;
+    @FXML
+    private AnchorPane myAnchorPane;
+    
     @FXML
     private TextField txtPlaca;
     @FXML
@@ -45,29 +46,29 @@ public class ConsultarVehiculoController implements Initializable {
     
     @FXML
     void handleButtonActionConsultar(ActionEvent event){
-        String placa = txtPlaca.getText();
-        transito.setPlacaIntroducida(placa);
         
-        System.out.println(placa);
-        if(placa.isEmpty()){
-        	
-            JOptionPane.showMessageDialog(null, "No ha ingresado ningun dato", "Error", 0);
+        
+        
+        if(!txtPlaca.getText().isEmpty()){
+            
+            try {
+                transito.consultar(txtPlaca.getText());
+                Parent root = (AnchorPane) FXMLLoader.load(getClass().getResource("/View/RegistrarDatos.fxml"));
+
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                stage.setTitle("Registrar");
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
         }else {
+            JOptionPane.showMessageDialog(null, "Por favor Ingrese la placa de su ", "Error!!!", 0);
+        
         	
-        	//transito.consultar(placa);
-        	try {
-
-    			Parent root = (AnchorPane) FXMLLoader.load(getClass().getResource("/View/RegistrarDatos.fxml"));
-
-    			Stage stage = new Stage();
-    			Scene scene = new Scene(root);
-    			stage.setTitle("Registro:");
-    			stage.setScene(scene);
-    			stage.show();
-
-    		} catch (Exception e) {
-    			e.printStackTrace();
-    		}
         } 
     }
 }
