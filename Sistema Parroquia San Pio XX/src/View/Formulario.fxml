@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="Control.FormularioController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <GridPane GridPane.columnIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="285.0" minHeight="10.0" prefHeight="216.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="184.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TitledPane animated="false" text="Registro Diezmo">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="274.0" prefWidth="298.0">
+                     <children>
+                        <Text layoutX="25.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Cedula:" />
+                        <TextField fx:id="txtCelula" layoutX="107.0" layoutY="39.0" />
+                        <Text layoutX="25.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor Diezmo:" />
+                        <TextField fx:id="txtPague" layoutX="107.0" layoutY="80.0" />
+                        <Button layoutX="28.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleActionConsultar" text="Consultar" />
+                        <Button layoutX="116.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleActionPagar" text="Pagar" />
+                        <Button layoutX="182.0" layoutY="134.0" mnemonicParsing="false" onAction="#handleActionTotalizar" text="Totalizar" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+            <TitledPane animated="false" prefHeight="189.0" prefWidth="300.0" text="Resultados" GridPane.rowIndex="1">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="myListView" layoutY="-4.0" prefHeight="164.0" prefWidth="300.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+         </children>
+      </GridPane>
+      <TitledPane animated="false" text="Registro Feligrés">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="531.0" prefWidth="298.0">
+               <children>
+                  <Text layoutX="37.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Cédula:" />
+                  <TextField fx:id="txtCedula" layoutX="121.0" layoutY="33.0" />
+                  <Text layoutX="37.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Nombre:" />
+                  <TextField fx:id="txtNombre" layoutX="121.0" layoutY="72.0" />
+                  <Text layoutX="36.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Dirección:" />
+                  <TextField fx:id="txtDireccion" layoutX="121.0" layoutY="112.0" />
+                  <Text layoutX="36.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Telefono:" />
+                  <TextField fx:id="txtTelefono" layoutX="121.0" layoutY="153.0" />
+                  <Text layoutX="36.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Estrato:" />
+                  <TextField fx:id="txtEstrato" layoutX="121.0" layoutY="193.0" />
+                  <Text layoutX="37.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Estado:" />
+                  <ComboBox fx:id="cmbEstado" layoutX="121.0" layoutY="235.0" prefWidth="150.0" />
+                  <Button layoutX="60.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleActionGuardar" text="Guardar" />
+                  <Button layoutX="166.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleActionEliminar" text="Eliminar" />
+                  <Button layoutX="170.0" layoutY="324.0" mnemonicParsing="false" onAction="#handleActionBuscar" text="Buscar" />
+                  <Button layoutX="55.0" layoutY="324.0" mnemonicParsing="false" onAction="#handleActionActualizar" text="Actualizar" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+   </children>
+</GridPane>
