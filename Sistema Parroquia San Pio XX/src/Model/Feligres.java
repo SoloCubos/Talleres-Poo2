@@ -15,9 +15,9 @@ public class Feligres {
     private String nombre;
     private String direccion;
     private String telefono;
-    private String estrato;
+    private int estrato;
     private String estado;
-    private Integer diezmo;
+    private int diezmo;
 
     public Feligres() {
     }
@@ -54,11 +54,11 @@ public class Feligres {
         this.telefono = telefono;
     }
 
-    public String getEstrato() {
+    public int getEstrato() {
         return estrato;
     }
 
-    public void setEstrato(String estrato) {
+    public void setEstrato(int estrato) {
         this.estrato = estrato;
     }
 
@@ -69,6 +69,29 @@ public class Feligres {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public int getDiezmo() {
+        return diezmo;
+    }
+
+    public void setDiezmo(int diezmo) {
+        this.diezmo = diezmo;
+    }
     
+    public void calcularDiezmo(){
+        System.out.println(getEstrato());
+        if(getEstado().equals("Deudor")){
+            if(getEstrato() <= 1){
+                setDiezmo(250000);
+            }if(getEstrato() > 1 && getEstrato() <= 3){
+                setDiezmo(500000);
+            }if(getEstrato() > 3){
+                setDiezmo(1000000);
+            }
+        }
+    }
     
+    public String toString(){       
+        return "Feligrés: " + getNombre() + ". CC: " + getCedula() + ". Estado: " + getEstado();
+    }
 }
