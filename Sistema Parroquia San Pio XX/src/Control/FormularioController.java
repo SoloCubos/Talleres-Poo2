@@ -5,7 +5,10 @@
  */
 package Control;
 
+<<<<<<< HEAD
 import Model.Parroquia;
+=======
+>>>>>>> c583bc609028c45302d223ef198bd01f52b5b712
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -14,7 +17,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+<<<<<<< HEAD
 import javax.swing.JOptionPane;
+=======
+>>>>>>> c583bc609028c45302d223ef198bd01f52b5b712
 
 /**
  * FXML Controller class
@@ -28,7 +34,11 @@ public class FormularioController implements Initializable {
     @FXML
     private TextField txtPague;
     @FXML
+<<<<<<< HEAD
     private ListView<String> myListView;
+=======
+    private ListView<?> myListView;
+>>>>>>> c583bc609028c45302d223ef198bd01f52b5b712
     @FXML
     private TextField txtCedula;
     @FXML
@@ -40,6 +50,7 @@ public class FormularioController implements Initializable {
     @FXML
     private TextField txtEstrato;
     @FXML
+<<<<<<< HEAD
     private ComboBox<String> cmbEstado;
     
     private Parroquia p;
@@ -47,18 +58,26 @@ public class FormularioController implements Initializable {
     public FormularioController() {
         p = Parroquia.getInstance();
     }
+=======
+    private ComboBox<?> cmbEstado;
+>>>>>>> c583bc609028c45302d223ef198bd01f52b5b712
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+<<<<<<< HEAD
         txtPague.setEditable(false);
         cmbEstado.getItems().addAll("Deudor","Cumplido");
+=======
+        // TODO
+>>>>>>> c583bc609028c45302d223ef198bd01f52b5b712
     }    
 
     @FXML
     private void handleActionConsultar(ActionEvent event) {
+<<<<<<< HEAD
         if(!txtCelula.getText().isEmpty()){
             if(p.existe(txtCelula.getText())){
                 String pagar = p.consultar(txtCelula.getText());
@@ -71,10 +90,13 @@ public class FormularioController implements Initializable {
         }else{
             JOptionPane.showMessageDialog(null, "Introduzca la cedula para conocer cuanto debe pagar", "Error!!!", JOptionPane.ERROR_MESSAGE);
         }
+=======
+>>>>>>> c583bc609028c45302d223ef198bd01f52b5b712
     }
 
     @FXML
     private void handleActionPagar(ActionEvent event) {
+<<<<<<< HEAD
         if(!txtCelula.getText().isEmpty()){
             if(p.existe(txtCelula.getText())){
                 p.pagar(txtCelula.getText());
@@ -90,18 +112,24 @@ public class FormularioController implements Initializable {
         }else{
             JOptionPane.showMessageDialog(null, "Introduzca la cedula para registrar el pago", "Error!!!", JOptionPane.ERROR_MESSAGE);
         }
+=======
+>>>>>>> c583bc609028c45302d223ef198bd01f52b5b712
     }
 
     @FXML
     private void handleActionTotalizar(ActionEvent event) {
+<<<<<<< HEAD
         txtCelula.clear();
         int total = p.totalizar();
         txtPague.setText("$" + total);
         JOptionPane.showMessageDialog(null, "La parroquia ha recibido $" + total + " por los diezmos pagados", "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+=======
+>>>>>>> c583bc609028c45302d223ef198bd01f52b5b712
     }
 
     @FXML
     private void handleActionGuardar(ActionEvent event) {
+<<<<<<< HEAD
         if(!(txtCedula.getText().isEmpty() || txtNombre.getText().isEmpty() || txtDireccion.getText().isEmpty() || 
            txtTelefono.getText().isEmpty() || txtEstrato.getText().isEmpty() || cmbEstado.getValue().isEmpty())){
             p.guardar(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), txtTelefono.getText(), txtEstrato.getText(), cmbEstado.getValue());
@@ -119,10 +147,13 @@ public class FormularioController implements Initializable {
         }else{
             JOptionPane.showMessageDialog(null, "Los campos marcados con * son obligatorios", "Error!!!", JOptionPane.ERROR_MESSAGE);
         }
+=======
+>>>>>>> c583bc609028c45302d223ef198bd01f52b5b712
     }
 
     @FXML
     private void handleActionEliminar(ActionEvent event) {
+<<<<<<< HEAD
         if(!txtCedula.getText().isEmpty()){
             if(p.existe(txtCedula.getText())){
                 p.eliminar(txtCedula.getText());
@@ -149,10 +180,13 @@ public class FormularioController implements Initializable {
         }else{
             JOptionPane.showMessageDialog(null, "Para eliminar un feligrés debe introducir su cedula", "Error!!!", JOptionPane.ERROR_MESSAGE);
         }
+=======
+>>>>>>> c583bc609028c45302d223ef198bd01f52b5b712
     }
 
     @FXML
     private void handleActionBuscar(ActionEvent event) {
+<<<<<<< HEAD
         
         if(!txtCedula.getText().isEmpty()){
             if(p.existe(txtCedula.getText())){
@@ -171,10 +205,13 @@ public class FormularioController implements Initializable {
         }else{
             JOptionPane.showMessageDialog(null, "Para buscar un feligrés debe introducir su cedula", "Error!!!", JOptionPane.ERROR_MESSAGE);
         }
+=======
+>>>>>>> c583bc609028c45302d223ef198bd01f52b5b712
     }
 
     @FXML
     private void handleActionActualizar(ActionEvent event) {
+<<<<<<< HEAD
         String nombre = null, direccion = null, telefono = null, estrato = null, estado =  null;
                 
         if(!(txtCedula.getText().isEmpty() || txtNombre.getText().isEmpty() || txtDireccion.getText().isEmpty() || 
@@ -201,6 +238,8 @@ public class FormularioController implements Initializable {
         }else{
             JOptionPane.showMessageDialog(null, "Debe introducir todos los campos marcados con *", "Error!!!", JOptionPane.ERROR_MESSAGE);
         }
+=======
+>>>>>>> c583bc609028c45302d223ef198bd01f52b5b712
     }
     
 }
