@@ -62,7 +62,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="531.0" prefWidth="298.0">
                <children>
-                  <Text layoutX="74.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Cédula:" />
+                  <Text layoutX="76.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Cédula:" />
                   <TextField fx:id="txtCedula" layoutX="158.0" layoutY="57.0" />
                   <Text layoutX="74.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Nombre:" />
                   <TextField fx:id="txtNombre" layoutX="158.0" layoutY="96.0" />
