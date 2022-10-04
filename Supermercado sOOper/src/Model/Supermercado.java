@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Solan
  */
-public class Supermercado {
+public class Supermercado {//Clase Fachada
     private ArrayList<Pedido> pedidos;
     
     private static Supermercado instance;

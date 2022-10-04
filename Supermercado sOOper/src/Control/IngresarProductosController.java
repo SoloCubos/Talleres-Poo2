@@ -50,6 +50,7 @@ public class IngresarProductosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         cmbCategoria.getItems().addAll("Alimentación", "Higiene", "Droguería", "Mascotas");
+        cmbTipo.getItems().addAll( "Fresco", "Congelado", "No Perecedero");
     }    
 
     @FXML
@@ -63,11 +64,11 @@ public class IngresarProductosController implements Initializable {
                 System.out.println("Here!!!!");
                 if(c.equals("Alimentación")){
                     txTipo.setOpacity(1);
-                    cmbTipo.setDisable(false);
-                    cmbTipo.getItems().addAll( "Higiene", "Droguería", "Mascotas");
+                    cmbTipo.setDisable(false); 
                 }else{
                     txTipo.setOpacity(0.4);
                     cmbTipo.setDisable(true);
+                    cmbTipo.setValue(null);
                 }
             }
             

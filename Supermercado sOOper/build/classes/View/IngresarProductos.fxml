@@ -26,6 +26,6 @@
       <Text fx:id="txTipo" layoutX="37.0" layoutY="250.0" opacity="0.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" />
       <ComboBox fx:id="cmbTipo" disable="true" layoutX="123.0" layoutY="233.0" prefHeight="25.0" prefWidth="182.0" />
       <Button layoutX="122.0" layoutY="272.0" mnemonicParsing="false" onAction="#handleGuardar" prefHeight="25.0" prefWidth="102.0" text="Guardar" />
-      <ComboBox fx:id="cmbCategoria" layoutX="123.0" layoutY="195.0" onMouseClicked="#handleCategoriaAlimentacion" onMouseDragged="#handleCategoriaAlimentacion" onMouseEntered="#handleCategoriaAlimentacion" onMouseExited="#handleCategoriaAlimentacion" onMouseMoved="#handleCategoriaAlimentacion" onMousePressed="#handleCategoriaAlimentacion" onMouseReleased="#handleCategoriaAlimentacion" prefHeight="25.0" prefWidth="182.0" />
+      <ComboBox fx:id="cmbCategoria" layoutX="123.0" layoutY="195.0" onMouseEntered="#handleCategoriaAlimentacion" prefHeight="25.0" prefWidth="182.0" />
    </children>
 </AnchorPane>

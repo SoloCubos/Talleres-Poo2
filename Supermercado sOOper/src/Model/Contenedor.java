@@ -15,6 +15,7 @@ public class Contenedor {
     private String referencia;
     private int volumen;
     private ArrayList<Producto> productos;
+    private boolean estado;
 
     public Contenedor() {
     }
@@ -42,6 +43,17 @@ public class Contenedor {
     public void addProductos(Producto producto) {
         this.productos.add(producto);
     }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+        
+    }
+    
+    
     
     
 }
