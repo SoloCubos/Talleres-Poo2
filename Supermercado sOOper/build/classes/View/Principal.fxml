@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="myAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.PrincipalController">
+   <children>
+      <Button layoutX="239.0" layoutY="45.0" mnemonicParsing="false" onAction="#handleIngresarProductos" text="Ingresar Productos" />
+      <Button layoutX="228.0" layoutY="98.0" mnemonicParsing="false" onAction="#handleIngresarContenedores" text="Ingresar Contenedores" />
+      <Button layoutX="247.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleModuloPedidos" text="Módulo Pedidos" />
+      <Text layoutX="63.0" layoutY="65.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido al programa de Gestión del Supermercado sOOper" textAlignment="CENTER" wrappingWidth="124.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="5.0" layoutY="216.0" opacity="0.05" strokeType="OUTSIDE" strokeWidth="0.0" text="Juan Fernando Solano Aguilar - 1151977" />
+   </children>
+</AnchorPane>
