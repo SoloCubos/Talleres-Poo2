@@ -14,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
@@ -35,18 +36,20 @@ public class IngresarProductosController implements Initializable {
     @FXML
     private TextField txtPeso;
     @FXML
-    private Text cmbCategoría;
+    private Text txTipo;
     @FXML
-    private ComboBox<String> cmbTipo;
+    private ComboBox<String> cmbTipo = new ComboBox<>();
     @FXML
-    private ComboBox<String> cmbCategoria;
+    private ComboBox<String> cmbCategoria = new ComboBox<>();
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        cmbCategoria.getItems().addAll("Alimentación", "Higiene", "Droguería", "Mascotas");
     }    
 
     @FXML
@@ -54,7 +57,21 @@ public class IngresarProductosController implements Initializable {
     }
 
     @FXML
-    private void handleCategoriaAlimentacion(MouseDragEvent event) {
+    private void handleCategoriaAlimentacion(MouseEvent event) {
+            String c = cmbCategoria.getValue();
+            if(!(c == null)){
+                System.out.println("Here!!!!");
+                if(c.equals("Alimentación")){
+                    txTipo.setOpacity(1);
+                    cmbTipo.setDisable(false);
+                    cmbTipo.getItems().addAll( "Higiene", "Droguería", "Mascotas");
+                }else{
+                    txTipo.setOpacity(0.4);
+                    cmbTipo.setDisable(true);
+                }
+            }
+            
+         
     }
     
 }
