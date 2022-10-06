@@ -31,6 +31,8 @@ public class ConsultarVehiculoController implements Initializable {
     private TextField txtPlaca;
     @FXML
     private Button btnConsultar;
+    @FXML
+    private TextField txtCedula;
     
     private Transito transito;
     
@@ -45,28 +47,41 @@ public class ConsultarVehiculoController implements Initializable {
     }
     
     @FXML
-    void handleButtonActionConsultar(ActionEvent event){
-        
-        
-        
-        if(!txtPlaca.getText().isEmpty()){
-            
-            try {
-                transito.consultar(txtPlaca.getText());
-                Parent root = (AnchorPane) FXMLLoader.load(getClass().getResource("/View/RegistrarDatos.fxml"));
+    void handleButtonActionConsultar(ActionEvent event){   
+        if(!(txtPlaca.getText().isEmpty() && txtCedula.getText().isEmpty())){
+            if (!txtPlaca.getText().isEmpty()) {
+                try {
+                    transito.consultar(txtPlaca.getText(), null);
+                    Parent root = (AnchorPane) FXMLLoader.load(getClass().getResource("/View/RegistrarDatos.fxml"));
 
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-                stage.setTitle("Registrar");
-                stage.setScene(scene);
-                stage.show();
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+                    stage.setTitle("Registrar");
+                    stage.setScene(scene);
+                    stage.show();
 
-            } catch (Exception e) {
-                e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }if (!txtCedula.getText().isEmpty()) {
+                try {
+                    transito.consultar(null, txtCedula.getText());
+                    Parent root = (AnchorPane) FXMLLoader.load(getClass().getResource("/View/RegistrarDatos.fxml"));
+
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+                    stage.setTitle("Registrar");
+                    stage.setScene(scene);
+                    stage.show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+                
             
         }else {
-            JOptionPane.showMessageDialog(null, "Por favor Ingrese la placa de su ", "Error!!!", 0);
+            JOptionPane.showMessageDialog(null, "Por favor Ingrese la placa de su vehiculo o su cedula", "Error!!!", 0);
         
         	
         } 

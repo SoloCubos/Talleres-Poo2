@@ -16,7 +16,8 @@ public class Transito {
     
     public ArrayList<Propietario> propietarios = new ArrayList<>();
     
-    private String PlacaIntroducida;
+    private String placaIntroducida;
+    private String cedulaIntroducida;
     
     private static Transito instance;
     
@@ -27,33 +28,63 @@ public class Transito {
     public static Transito getInstance(){
         if(instance == null){
             instance = new Transito();
-        }
-        return instance;
+        }return instance;
+    }
+
+    public ArrayList<Propietario> getListaPropietarios() {
+        return propietarios;
     }
 
     public String getPlacaIntroducida() {
-            return PlacaIntroducida;
+            return placaIntroducida;
     }
 
     public void setPlacaIntroducida(String placa) {
-            PlacaIntroducida = placa;
+            placaIntroducida = placa;
+    }
+
+    public String getCedulaIntroducida() {
+        return cedulaIntroducida;
+    }
+
+    public void setCedulaIntroducida(String cedulaIntroducida) {
+        this.cedulaIntroducida = cedulaIntroducida;
     }
     
-    public void consultar(String placa){	
+    public void consultar(String placa, String cedula){	
         setPlacaIntroducida(placa);
-    	if(!existePlaca(placa)) {	//Si no existe
-            JOptionPane.showMessageDialog(null, "El vehiculo identificado con la placa `" + placa + " no se encontro, por favor registrelo", "Error", 0);  		
-    	}else //si ya existe o agregar otro
-            JOptionPane.showMessageDialog(null, "Tu Vehiculo ya esta registrado, a continuacion podras actualizar tus datos y/o los datos de tu vehiculo y/o registrar otro", "Continuar", 1);
-			
+        setCedulaIntroducida(cedula);
+        if(placa!=null){
+            if(!existePlaca(placa)) {	//Si no existe
+                JOptionPane.showMessageDialog(null, "El vehiculo identificado con la placa `" + placa + " no se encontro, por favor registrelo", "Error", 0);  		
+            }else //si ya existe o agregar otro
+                JOptionPane.showMessageDialog(null, "Tu Vehiculo ya esta registrado, a continuacion podras actualizar tus datos y/o los datos de tu vehiculo y/o registrar otro", "Continuar", 1);
+        }if(cedula!=null){
+            if(!existePropietario(cedula)) {	//Si no existe
+                JOptionPane.showMessageDialog(null, "La persona identificada con la cedula `" + cedula + " no se encontro, por favor registrese", "Error", 0);  		
+            }else //si ya existe o agregar otro
+                JOptionPane.showMessageDialog(null, "Ya te encuentras registrado, a continuación podrás actualizar tus datos y/o agregar vehiculos", "Continuar", 1);
+        }
     }
-    
+    public ArrayList<String> listaPlacas(String cedula){
+        ArrayList<String> lista = new ArrayList<>();
+        if (cedula!=null) {
+            for (int i = 0; i < propietarios.size(); i++) {
+                if(propietarios.get(i).getCedula().equals(cedula)){
+                    for (int j = 0; j < propietarios.get(i).getVehiculos().size(); j++) {
+                        lista.add(propietarios.get(i).getVehiculos().get(j).getPlaca());
+                    }
+                }
+            }
+        }return lista;        
+    }
     
     public void agregar(String nombre, String apellido, String cedula, String celular, String correo,
                         String placa, String marca, String linea, String modelo, String tipo){
         Vehiculo v = new Vehiculo();
         Propietario p = new Propietario();
-        if(!existePlaca(placa) || !existePropietario(cedula)){
+        if(!existePlaca(placa) && !existePropietario(cedula)){
+            
             v.setPlaca(placa);
             v.setMarca(marca);
             v.setLinea(linea);
@@ -65,10 +96,11 @@ public class Transito {
             p.setCedula(cedula);
             p.setCelular(celular);
             p.setCorreo(correo);
+            v.setPropietario(p);
             p.addVehiculos(v);
             propietarios.add(p);
-            
-        }if(!existePlaca(placa) || existePropietario(cedula)){
+            JOptionPane.showMessageDialog(null, "Datos agregados con exito", "Continuar", 1);
+        }if(!existePlaca(placa) && existePropietario(cedula)){
             v.setPlaca(placa);
             v.setMarca(marca);
             v.setLinea(linea);
@@ -76,9 +108,10 @@ public class Transito {
             v.setTipo(tipo);
             for (int i = 0; 1 < propietarios.size(); i++){
                 if(propietarios.get(i).getCedula().equals(cedula)){
+                    v.setPropietario(propietarios.get(i));
                     propietarios.get(i).addVehiculos(v);
                 }
-            }
+            }JOptionPane.showMessageDialog(null, "Nuevo Vehiculo Agregado con exito", "Continuar", 1);
         }
     }
        

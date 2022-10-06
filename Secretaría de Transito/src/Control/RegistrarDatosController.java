@@ -43,7 +43,7 @@ public class RegistrarDatosController implements Initializable{
     @FXML
     private TextField txtNombre;
     @FXML
-    private TextField txtPlaca;
+    private ComboBox<String> cmbPlaca;
     @FXML
     private TextField txtTipo;
     
@@ -55,28 +55,25 @@ public class RegistrarDatosController implements Initializable{
 
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
-        txtPlaca.setText(transito.getPlacaIntroducida());
+        cmbPlaca.setEditable(true);
+        cmbPlaca.setValue(transito.getPlacaIntroducida());
+        txtCedula.setText(transito.getCedulaIntroducida());
+        //cmbPlaca.getItems().addAll(transito.listaPlacas(txtCedula.getText()));
         
-            for(int i = 0; i < transito.propietarios.size(); i++){
-                for (int j = 0; j < transito.propietarios.get(i).getVehiculos().size(); j++) {
-                    if(transito.propietarios.get(i).getVehiculos().get(j).getPlaca().equals(txtPlaca.getText())){
-                        txtNombre.setText(transito.propietarios.get(i).getNombre());
-                        txtApellido.setText(transito.propietarios.get(i).getApellidos());
-                        txtCedula.setText(transito.propietarios.get(i).getCedula());
-                        txtCelular.setText(transito.propietarios.get(i).getCelular());
-                        txtCorreo.setText(transito.propietarios.get(i).getCorreo());
-                        
-                        txtMarca.setText(transito.propietarios.get(i).getVehiculos().get(j).getMarca());
-                        txtLinea.setText(transito.propietarios.get(i).getVehiculos().get(j).getLinea());
-                        txtModelo.setText(transito.propietarios.get(i).getVehiculos().get(j).getModelo());
-                        txtTipo.setText(transito.propietarios.get(i).getVehiculos().get(j).getTipo());
-                    }
-                } 
+        if(transito.existePlaca(cmbPlaca.getValue())){
+            for (int i = 0; i < transito.getListaPropietarios().size(); i++) {
+                for (int j = 0; j < transito.getListaPropietarios().get(i).getVehiculos().size(); j++) {
+                    if(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPlaca().equals(cmbPlaca.getValue())){
+                        txtNombre.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getNombre());
+                        txtApellido.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getApellido());
+                        txtNombre.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getNombre());
+                        txtNombre.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getNombre());
+                        txtNombre.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getNombre());
+                    }  
+                }
             }
-        
-    	
-    	
-        
+        }
+
     }    
 
     @FXML
@@ -89,11 +86,11 @@ public class RegistrarDatosController implements Initializable{
         if(!(txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || txtCedula.getText().isEmpty() || txtCelular.getText().isEmpty() || txtCorreo.getText().isEmpty() ||
            txtMarca.getText().isEmpty() || txtModelo.getText().isEmpty() || txtLinea.getText().isEmpty() || txtTipo.getText().isEmpty())){
             transito.agregar(txtNombre.getText(), txtApellido.getText(), txtCedula.getText(), txtCelular.getText(), txtCorreo.getText(),
-                             txtPlaca.getText(), txtMarca.getText(), txtLinea.getText(), txtModelo.getText(), txtTipo.getText());
+                             cmbPlaca.getValue(), txtMarca.getText(), txtLinea.getText(), txtModelo.getText(), txtTipo.getText());
             
-            Node source = (Node) event.getSource();
-            Stage stage = (Stage) source.getScene().getWindow();
-            stage.close();
+            //Node source = (Node) event.getSource();
+            //Stage stage = (Stage) source.getScene().getWindow();
+            //stage.close();
             
         }else{
             

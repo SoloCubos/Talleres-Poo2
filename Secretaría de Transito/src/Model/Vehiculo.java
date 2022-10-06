@@ -15,6 +15,7 @@ public class Vehiculo {
     private String linea;
     private String modelo;
     private String tipo;
+    private Propietario propietario;
         
     public Vehiculo() {
     }
@@ -58,6 +59,16 @@ public class Vehiculo {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public Propietario getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(Propietario propietario) {
+        this.propietario = propietario;
+    }
+    
+    
 
     @Override
     public String toString() {
