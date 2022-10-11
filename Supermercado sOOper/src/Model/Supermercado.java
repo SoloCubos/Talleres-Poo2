@@ -13,13 +13,28 @@ import java.util.ArrayList;
  */
 public class Supermercado {//Clase Fachada
     private ArrayList<Pedido> pedidos;
+    private ArrayList<Contenedor> contenedores;
     
     private static Supermercado instance;
     
-    public Supermercado getInstance(){
+    public static Supermercado getInstance(){
         if(instance == null)
             instance = new Supermercado();
         return instance;
+    }
+
+    public Supermercado() {
+        pedidos = new ArrayList<>();
+    }
+    
+    public void agregarBolsas(String referencia, String volumen, String peso, String ancho, String alto){
+        Bolsa b = new Bolsa();
+        b.setReferencia(referencia);
+        b.setVolumen(Integer.parseInt(volumen));
+        b.set
+        b.setAncho(ancho);
+        
+        contenedores.add(b);
     }
     
 }

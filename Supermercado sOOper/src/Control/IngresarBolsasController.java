@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Supermercado;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -35,9 +36,15 @@ public class IngresarBolsasController implements Initializable {
     @FXML
     private TextField txtAlto;
     @FXML
-    private ListView<?> myListView;
+    private ListView<String> myListView;
     @FXML
     private Label lblBolsas;
+    
+    private Supermercado s;
+
+    public IngresarBolsasController() {
+        s = Supermercado.getInstance();
+    }
 
     /**
      * Initializes the controller class.
@@ -49,6 +56,7 @@ public class IngresarBolsasController implements Initializable {
 
     @FXML
     private void handleGuardar(ActionEvent event) {
+        
     }
 
     @FXML

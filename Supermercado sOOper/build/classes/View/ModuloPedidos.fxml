@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="546.0" prefWidth="579.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="Control.ModuloPedidosController">
+   <children>
+      <Text layoutX="23.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar Nuevo Pedido:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="300.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Referencia:" />
+      <TextField fx:id="txtReferencia" layoutX="370.0" layoutY="34.0" prefHeight="25.0" prefWidth="190.0" />
+      <Text layoutX="23.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo Contenedor:" />
+      <ComboBox fx:id="cmbTipoContenedor" layoutX="122.0" layoutY="83.0" prefHeight="25.0" prefWidth="70.0" />
+      <Button layoutX="204.0" layoutY="83.0" mnemonicParsing="false" onAction="#handleBuscarContenedores" text="Buscar" />
+      <Text layoutX="268.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contenedor:" />
+      <ComboBox fx:id="cmbSeleccionarContenedor" layoutX="342.0" layoutY="83.0" prefWidth="150.0" />
+      <Button layoutX="501.0" layoutY="83.0" mnemonicParsing="false" onAction="#handleAgregarContenedorPedido" text="Agregar" />
+      <Separator layoutX="22.0" layoutY="128.0" prefHeight="0.0" prefWidth="541.0" />
+      <Text layoutX="36.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccionar Contenedor:" />
+      <ComboBox fx:id="cmbContenedoresPedido" layoutX="25.0" layoutY="180.0" onMouseEntered="#handleContenedorSeleccionado" prefWidth="150.0" />
+      <Text layoutX="190.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar Productos al Contenedor:" />
+      <ComboBox fx:id="cmbListaProductos" layoutX="190.0" layoutY="180.0" prefHeight="25.0" prefWidth="299.0" />
+      <Button layoutX="501.0" layoutY="180.0" mnemonicParsing="false" onAction="#handleAgregarProductosContenedor" text="Agregar" />
+      <Button layoutX="26.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleAgregarContenedorLleno" text="Agregar Contenedor lleno al Pedido" />
+      <Button layoutX="254.0" layoutY="230.0" mnemonicParsing="false" onAction="#handleFinalizarPedido" text="Finalizar Pedido" />
+      <Text layoutX="370.0" layoutY="230.0" opacity="0.24" strokeType="OUTSIDE" strokeWidth="0.0" text="Recuerde que no es posible mezclar productos de distintas categorías en un mismo contenedor." textAlignment="RIGHT" wrappingWidth="190.0" />
+      <Text layoutX="410.0" layoutY="150.0" opacity="0.24" strokeType="OUTSIDE" strokeWidth="0.0" text="Si el contenedor se llena, agreguelo al pedido." textAlignment="RIGHT" wrappingWidth="150.0" />
+      <Separator layoutX="22.0" layoutY="270.0" prefHeight="3.0" prefWidth="281.0" />
+      <Separator layoutX="302.0" layoutY="294.0" prefHeight="3.0" prefWidth="260.0" />
+      <Separator layoutX="301.0" layoutY="270.0" orientation="VERTICAL" prefHeight="25.0" prefWidth="0.0" />
+      <Text layoutX="23.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista de Pedidos:">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <ListView fx:id="myListView" layoutX="21.0" layoutY="308.0" prefHeight="224.0" prefWidth="541.0" />
+   </children>
+</AnchorPane>

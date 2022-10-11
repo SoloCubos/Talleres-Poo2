@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Supermercado;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -42,7 +43,12 @@ public class IngresarProductosController implements Initializable {
     @FXML
     private ComboBox<String> cmbCategoria = new ComboBox<>();
     
+    private Supermercado s;
 
+    public IngresarProductosController() {
+        s = Supermercado.getInstance();
+    }
+    
     /**
      * Initializes the controller class.
      */

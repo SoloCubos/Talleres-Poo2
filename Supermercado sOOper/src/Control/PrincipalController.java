@@ -64,7 +64,7 @@ public class PrincipalController implements Initializable {
 
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+        }
     }
     @FXML
     private void handleIngresarCaja(ActionEvent event) {
@@ -79,12 +79,23 @@ public class PrincipalController implements Initializable {
 
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+        }
     }
 
     @FXML
     private void handleModuloPedidos(ActionEvent event) {
-        
+        try { 
+            Parent root = (AnchorPane) FXMLLoader.load(getClass().getResource("/View/ModuloPedidos.fxml"));
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setTitle("Módulo Pedidos");
+            stage.setScene(scene);
+            stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+        }
     }
     
 }

@@ -16,6 +16,7 @@ public class Contenedor {
     private int volumen;
     private ArrayList<Producto> productos;
     private boolean estado;
+    private String tipo;
 
     public Contenedor() {
     }
@@ -50,10 +51,13 @@ public class Contenedor {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
-        
     }
-    
-    
-    
-    
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }   
 }
