@@ -23,9 +23,9 @@ public class FormularioDocenteController implements Initializable {
     @FXML
     private TextField txtNombre;
     @FXML
-    private TextField txtApellido;
+    private TextField txtCreditos;
     @FXML
-    private TextField txtDireccion;
+    private TextField txtCodDocente;
 
     /**
      * Initializes the controller class.
