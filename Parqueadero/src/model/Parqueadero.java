@@ -6,10 +6,19 @@
 package model;
 
 /**
- *
+ * Clase Fachada, contiene las funciones del negocio
  * @author Solan
  */
 public class Parqueadero {
+    
+    private static Parqueadero instance;
+    
+    public static Parqueadero getInstance(){
+        if (instance == null) 
+            instance = new Parqueadero();
+        return instance;
+    }
+    
     public static Integer tipo(String tipo){
         if(tipo.equals("Carro")){
             return 1;
