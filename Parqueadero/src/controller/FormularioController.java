@@ -34,6 +34,8 @@ public class FormularioController implements Initializable {
     @FXML
     private TextField txtOtros;
     @FXML
+    private TableColumn<?, ?> tcFecha;
+    @FXML
     private TableColumn<?, ?> tcTipo;
     @FXML
     private TableColumn<?, ?> tcPlaca;
