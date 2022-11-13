@@ -2,8 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -12,13 +10,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="377.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FormularioController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="339.0" prefWidth="451.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FormularioController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="225.0" minHeight="10.0" prefHeight="216.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="201.0" minHeight="10.0" prefHeight="161.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="259.0" minHeight="10.0" prefHeight="257.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="201.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <GridPane>
@@ -32,16 +30,18 @@
          <children>
             <AnchorPane prefHeight="213.0" prefWidth="246.0">
                <children>
-                  <AnchorPane id="AnchorPane" layoutX="9.0" layoutY="9.0" prefHeight="199.0" prefWidth="209.0" style="-fx-background-color: #e0f2ff; -fx-border-width: 2; -fx-border-color: #d6d6d6;">
+                  <AnchorPane id="AnchorPane" layoutX="9.0" layoutY="9.0" prefHeight="241.0" prefWidth="209.0" style="-fx-background-color: #e0f2ff; -fx-border-width: 2; -fx-border-color: #d6d6d6;">
                      <children>
                         <Text layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Placa:" />
                         <Text layoutX="29.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modelo:" />
-                        <Text layoutX="30.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" />
+                        <Text layoutX="30.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha:" />
+                        <Text layoutX="30.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" />
                         <TextField fx:id="txtPlaca" layoutX="82.0" layoutY="45.0" prefHeight="25.0" prefWidth="99.0" />
                         <TextField fx:id="txtModelo" layoutX="82.0" layoutY="82.0" prefHeight="25.0" prefWidth="99.0" />
-                        <ComboBox fx:id="cmbTipo" layoutX="82.0" layoutY="119.0" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #bde3ff;" />
-                        <Button layoutX="28.0" layoutY="157.0" mnemonicParsing="false" onAction="#handleButtonActionAgregar" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #bde3ff;" text="Agregar" />
-                        <Button layoutX="114.0" layoutY="157.0" mnemonicParsing="false" onAction="#handleButtonActionLimpiar" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #bde3ff;" text="Limpiar" />
+                        <TextField fx:id="txtFecha" layoutX="82.0" layoutY="121.0" prefHeight="25.0" prefWidth="99.0" />
+                        <ComboBox fx:id="cmbTipo" layoutX="82.0" layoutY="161.0" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #bde3ff;" />
+                        <Button layoutX="28.0" layoutY="199.0" mnemonicParsing="false" onAction="#handleButtonActionAgregar" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #bde3ff;" text="Agregar" />
+                        <Button layoutX="114.0" layoutY="199.0" mnemonicParsing="false" onAction="#handleButtonActionLimpiar" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #bde3ff;" text="Limpiar" />
                         <Text layoutX="24.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingreso Vehiculos">
                            <font>
                               <Font size="20.0" />
@@ -53,43 +53,37 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <AnchorPane id="AnchorPane" layoutX="8.0" layoutY="9.0" prefHeight="199.0" prefWidth="209.0" style="-fx-background-color: #ffe6ee; -fx-border-width: 2; -fx-border-color: #d6d6d6;">
+                  <AnchorPane id="AnchorPane" layoutX="8.0" layoutY="9.0" prefHeight="241.0" prefWidth="209.0" style="-fx-background-color: #ffe6ee; -fx-border-width: 2; -fx-border-color: #d6d6d6;">
                      <children>
                         <Text layoutX="29.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carros" />
-                        <Text layoutX="29.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Motos:" />
-                        <Text layoutX="30.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Otros:" />
+                        <Text layoutX="29.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Motos:" />
+                        <Text layoutX="29.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:" />
                         <TextField fx:id="txtCarros" editable="false" layoutX="82.0" layoutY="45.0" prefHeight="25.0" prefWidth="99.0" />
-                        <TextField fx:id="txtMotos" editable="false" layoutX="82.0" layoutY="82.0" prefHeight="25.0" prefWidth="99.0" />
-                        <Button layoutX="28.0" layoutY="157.0" mnemonicParsing="false" onAction="#handleButtonActionReiniciar" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #ffbfd6;" text="Reiniciar" />
-                        <Button layoutX="114.0" layoutY="157.0" mnemonicParsing="false" onAction="#handleButtonActionTotalizar" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #ffbfd6;" text="Totalizar" />
+                        <TextField fx:id="txtMotos" editable="false" layoutX="82.0" layoutY="95.0" prefHeight="25.0" prefWidth="99.0" />
+                        <TextField fx:id="txtTotal" editable="false" layoutX="81.0" layoutY="145.0" prefHeight="25.0" prefWidth="99.0" />
+                        <Button layoutX="28.0" layoutY="199.0" mnemonicParsing="false" onAction="#handleButtonActionReiniciar" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #ffbfd6;" text="Reiniciar" />
+                        <Button layoutX="114.0" layoutY="199.0" mnemonicParsing="false" onAction="#handleButtonActionTotalizar" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #ffbfd6;" text="Totalizar" />
                         <Text layoutX="73.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totales">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="txtOtros" editable="false" layoutX="82.0" layoutY="119.0" prefHeight="25.0" prefWidth="99.0" />
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
          </children>
       </GridPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+      <AnchorPane prefHeight="90.0" prefWidth="451.0" GridPane.rowIndex="1">
          <children>
-            <AnchorPane layoutX="9.0" layoutY="5.0" prefHeight="146.0" prefWidth="433.0">
+            <AnchorPane layoutX="9.0" layoutY="5.0" prefHeight="70.0" prefWidth="433.0" style="-fx-background-color: #fffdd1; -fx-border-width: 2; -fx-border-color: #d6d6d6;">
                <children>
-                  <TableView prefHeight="146.0" prefWidth="433.0" style="-fx-background-color: #fffdd1; -fx-border-width: 2; -fx-border-color: #d6d6d6;">
-                    <columns>
-                        <TableColumn fx:id="tcFecha" editable="false" prefWidth="121.0" style="-fx-background-color: #fffa87;" text="Fecha Ingreso" />
-                      <TableColumn fx:id="tcTipo" editable="false" prefWidth="50.0" style="-fx-background-color: #fffa87;" text="Tipo" />
-                      <TableColumn fx:id="tcPlaca" editable="false" prefWidth="97.0" style="-fx-background-color: #fffa87;" text="Placa" />
-                        <TableColumn fx:id="tcModelo" editable="false" prefWidth="65.0" style="-fx-background-color: #fffa87;" text="Modelo" />
-                        <TableColumn fx:id="tcValor" editable="false" prefWidth="111.0" style="-fx-background-color: #fffa87;" text="Valor" />
-                    </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
+                  <Text layoutX="23.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ganancias del Dia: (cop)">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtGanancias" editable="false" layoutX="255.0" layoutY="23.0" />
                </children>
             </AnchorPane>
          </children>

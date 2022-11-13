@@ -32,28 +32,23 @@ public class FormularioController implements Initializable {
     @FXML
     private TextField txtMotos;
     @FXML
-    private TextField txtOtros;
+    private TextField txtTotal;
     @FXML
-    private TableColumn<?, ?> tcFecha;
+    private TextField txtGanancias;
     @FXML
-    private TableColumn<?, ?> tcTipo;
-    @FXML
-    private TableColumn<?, ?> tcPlaca;
-    @FXML
-    private TableColumn<?, ?> tcModelo;
-    @FXML
-    private TableColumn<?, ?> tcValor;
+    private TextField txtFecha;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cmbTipo.getItems().addAll("Carro", "Moto", "Otro");
+        cmbTipo.getItems().addAll("Carro", "Moto");
     }    
 
     @FXML
     private void handleButtonActionAgregar(ActionEvent event) {
+        
     }
 
     @FXML
@@ -63,6 +58,7 @@ public class FormularioController implements Initializable {
 
     @FXML
     private void handleButtonActionReiniciar(ActionEvent event) {
+        
     }
 
     @FXML
