@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author Solan
@@ -13,6 +15,7 @@ public class IngresoVehiculo {
     private String placa;
     private Integer modelo;
     private Integer tipo;
+    private Date fecha;
     private Integer valor;
 
     public IngresoVehiculo() {
@@ -68,4 +71,13 @@ public class IngresoVehiculo {
     public void setValor(Integer valor) {
         this.valor = valor;
     } 
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+   
 }

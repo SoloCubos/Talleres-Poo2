@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package model;
+import java.util.Date;
+import services.DAO.IngresoVehiculoDAO;
 
 /**
  * Clase Fachada, contiene las funciones del negocio
@@ -19,21 +21,21 @@ public class Parqueadero {
         return instance;
     }
     
-    public static Integer tipo(String tipo){
+    public int tipo(String tipo){
         if(tipo.equals("Carro")){
             return 1;
         }if(tipo.equals("Moto")){
             return 2;
-        }else return 3;
+        }else return 0;
     }
     
-    public static Boolean validarAuto(IngresoVehiculo i){
-        if(i.getPlaca().length()==6 && i.getTipo()==1){
-            return true;
-        }if(i.getPlaca().length()==5 && i.getTipo()==2){
-            return true;
-        }else {
-            return false;
-        }
+    public Boolean validarPlaca(String placa){
+        IngresoVehiculoDAO iV = new IngresoVehiculoDAO();
+        return iV.consultarPlaca(placa);
+    }
+    
+    public Boolean ingresarVehiculo(String placa, String modelo, Date fecha, String tipo){
+        
+        return false;
     }
 }
