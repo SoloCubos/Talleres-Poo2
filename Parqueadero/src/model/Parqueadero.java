@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package model;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import services.DAO.IngresoVehiculoDAO;
 
 /**
@@ -23,19 +27,60 @@ public class Parqueadero {
     
     public int tipo(String tipo){
         if(tipo.equals("Carro")){
-            return 1;
+            return 0;
         }if(tipo.equals("Moto")){
-            return 2;
-        }else return 0;
+            return 1;
+        }else return 2;
     }
     
     public Boolean validarPlaca(String placa){
         IngresoVehiculoDAO iV = new IngresoVehiculoDAO();
+        System.out.println(iV.consultarPlaca(placa));
         return iV.consultarPlaca(placa);
     }
     
-    public Boolean ingresarVehiculo(String placa, String modelo, Date fecha, String tipo){
+    public Boolean ingresarVehiculo(String placa, String modelo, String fecha, String type){
+        try {
+            IngresoVehiculo i = new IngresoVehiculo();
         
-        return false;
+            SimpleDateFormat fechaIngreso = new SimpleDateFormat("dd/MM/yyyy"); 
+
+            i.setPlaca(placa);
+            i.setModelo(Integer.parseInt(modelo));
+            i.setTipo(tipo(type));
+            i.setFecha(fechaIngreso.parse(fecha));
+            i.setValor(i.getValor());
+        
+            IngresoVehiculoDAO iV = new IngresoVehiculoDAO();
+
+            iV.guardar(i);
+            return true;
+        } catch (ParseException ex) {
+            Logger.getLogger(Parqueadero.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
+            return false;
+        }
+    }
+    
+    public void reiniciar(){
+        IngresoVehiculoDAO iV = new IngresoVehiculoDAO();
+        iV.reinciar();
+    }
+    
+    public String totalizar(){
+        IngresoVehiculoDAO iV = new IngresoVehiculoDAO();
+        return iV.totalizar();
+    }
+    
+    public int[] cantVehiculos(){
+        IngresoVehiculoDAO iV = new IngresoVehiculoDAO();
+        
+        int[] cV = new int[3];
+        
+        cV[0] = iV.cantCarros();
+        cV[1] = iV.cantMotos();
+        cV[2] = cV[0] + cV[1];
+        
+        return cV;
     }
 }

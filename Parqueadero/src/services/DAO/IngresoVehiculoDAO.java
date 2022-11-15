@@ -23,7 +23,7 @@ public class IngresoVehiculoDAO {
         try{
             Connection conexion = Conexion.obtener();
             PreparedStatement consulta;
-            consulta = conexion.prepareStatement("SELECT * FROM ingreso WHERE placa = " + placa);        
+            consulta = conexion.prepareStatement("SELECT * FROM registro WHERE placa = " + placa);        
 
 
             ResultSet rs = consulta.executeQuery();
@@ -32,58 +32,103 @@ public class IngresoVehiculoDAO {
             }
             return false;
         }catch(SQLException | ClassNotFoundException ex){
-            
+            System.out.println(ex);
         }return false;
     }
-    public void guardar(IngresoVehiculo i){
-      try{
-         Connection conexion = Conexion.obtener();
-         PreparedStatement consulta;
-         consulta = conexion.prepareStatement("INSERT INTO ingreso (placa, modelo, tipo, valor) "
-                 + "VALUES(?, ?, ?, ?)");        
-         
-         consulta.executeUpdate();
-      }catch(SQLException | ClassNotFoundException ex){
-            
-      }
+    
+    public boolean guardar(IngresoVehiculo i){
+        try{
+            Connection conexion = Conexion.obtener();
+            PreparedStatement consulta;
+            consulta = conexion.prepareStatement("INSERT INTO registro (placa, modelo, tipo, valor) " + 
+                                                 "VALUES(" + i.getPlaca() + ", " + 
+                                                             i.getModelo() + ", " + 
+                                                             i.getTipo() + "," + 
+                                                             i.getValor() + ")");        
+
+            consulta.executeUpdate();
+            return true;
+        }catch(SQLException | ClassNotFoundException ex){
+            System.out.println(ex);
+            return false;
+        }
     }
     
     public String totalizar(){
-      try{
-         Connection conexion = Conexion.obtener();
-         PreparedStatement consulta;
-         consulta = conexion.prepareStatement("select "
-                 + "sum(valor) as total, count(placa) as cantidad, tipo "
-                 + "from ingreso group by tipo");        
-         
-         ResultSet rs = consulta.executeQuery();
-         
-         String total = "";
-         if(rs.next()){
-             total = total + "El total de carros es " + rs.getInt("cantidad") + " con un valor de " + rs.getInt("valor") + "";
+        try{
+            Connection conexion = Conexion.obtener();
+            PreparedStatement consulta;
+            consulta = conexion.prepareStatement("select "
+                    + "sum(valor) as total, count(placa) as cantidad, tipo "
+                    + "from registro group by tipo");        
 
-         }
-         
-         if(rs.next()){
-             total = total + ", el total de motos es " + rs.getInt("cantidad") + " con un valor de " + rs.getInt("valor") + "";
+            ResultSet rs = consulta.executeQuery();
 
-         }
-         return total;
-      }catch(SQLException | ClassNotFoundException ex){
-            
-      }
-      return "Error al totalizar";
+            String total = null;
+            if(rs.next()){
+                total = "El total de carros es " + rs.getInt("cantidad") + " con un valor de " + rs.getInt("valor") + "";
+
+            }
+            if(rs.next()){
+                total = total + ", el total de motos es " + rs.getInt("cantidad") + " con un valor de " + rs.getInt("valor") + "";
+
+            }
+            return total;
+        }catch(SQLException | ClassNotFoundException ex){
+            System.out.println(ex);
+            return "Error al totalizar";
+        }
+        
     }
     
-    public void eliminar(){
-      try{
-         Connection conexion = Conexion.obtener();
-         PreparedStatement consulta;
-         consulta = conexion.prepareStatement("DELETE FROM ingreso");        
-         consulta.executeUpdate();
-      }catch(SQLException | ClassNotFoundException ex){
+    public boolean reinciar(){
+        try{
+            Connection conexion = Conexion.obtener();
+            PreparedStatement consulta;
+            consulta = conexion.prepareStatement("DELETE FROM registro");        
+            consulta.executeUpdate();
+            return true;
+        }catch(SQLException | ClassNotFoundException ex){
+            System.out.println(ex);
+            return false;
+        }
+    }
+    
+    public int cantCarros(){
+        int c = 0;
+        try{
+            Connection conexion = Conexion.obtener();
+            PreparedStatement consulta;
+            consulta = conexion.prepareStatement("SELECT * FROM registro WHERE tipo = '0'");   
+            ResultSet rs = consulta.executeQuery();
             
-      }
-      
+            while(rs.next()){
+                c++;
+            }
+            
+            return c;
+        }catch(SQLException | ClassNotFoundException ex){
+            System.out.println(ex);
+            return 0;
+        }
+    }
+    
+    public int cantMotos(){
+        int c = 0;
+        try{
+            Connection conexion = Conexion.obtener();
+            PreparedStatement consulta;
+            consulta = conexion.prepareStatement("SELECT * FROM registro WHERE tipo = '1'");   
+            ResultSet rs = consulta.executeQuery();
+            
+            while(rs.next()){
+                c++;
+            }
+            
+            return c;
+        }catch(SQLException | ClassNotFoundException ex){
+            System.out.println(ex);
+            return 0;
+        }
     }
 }
