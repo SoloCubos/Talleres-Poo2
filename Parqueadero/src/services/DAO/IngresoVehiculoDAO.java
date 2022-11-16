@@ -40,8 +40,9 @@ public class IngresoVehiculoDAO {
         try{
             Connection conexion = Conexion.obtener();
             PreparedStatement consulta;
-            consulta = conexion.prepareStatement("INSERT INTO registro (placa, modelo, tipo, valor) " + 
-                                                 "VALUES(" + i.getPlaca() + ", " + 
+            consulta = conexion.prepareStatement("INSERT INTO registro (placa, fecha, modelo, tipo, valor) " + 
+                                                 "VALUES(" + i.getPlaca() + ", " +
+                                                             i.getFecha() + ", " +
                                                              i.getModelo() + ", " + 
                                                              i.getTipo() + "," + 
                                                              i.getValor() + ")");        
@@ -56,29 +57,15 @@ public class IngresoVehiculoDAO {
     
     public String totalizar(){
         try{
-            Connection conexion = Conexion.obtener();
-            PreparedStatement consulta;
-            consulta = conexion.prepareStatement("select "
-                    + "sum(valor) as total, count(placa) as cantidad, tipo "
-                    + "from registro group by tipo");        
-
-            ResultSet rs = consulta.executeQuery();
-
-            String total = null;
-            if(rs.next()){
-                total = "El total de carros es " + rs.getInt("cantidad") + " con un valor de " + rs.getInt("valor") + "";
-
-            }
-            if(rs.next()){
-                total = total + ", el total de motos es " + rs.getInt("cantidad") + " con un valor de " + rs.getInt("valor") + "";
-
-            }
+            String total = null;      
+            total = "El total de carros es " + cantCarros() + " con un valor de " + gananciaCarros() + ", "
+                  + "el total de motos es " + cantMotos() + " con un valor de " + gananciaMotos() + "";
             return total;
-        }catch(SQLException | ClassNotFoundException ex){
+        }catch(Exception ex){
             System.out.println(ex);
-            return "Error al totalizar";
+            return "Error al Totalizar";
         }
-        
+       
     }
     
     public boolean reinciar(){
@@ -113,6 +100,25 @@ public class IngresoVehiculoDAO {
         }
     }
     
+    public int gananciaCarros(){
+        int c = 0;
+        try{
+            Connection conexion = Conexion.obtener();
+            PreparedStatement consulta;
+            consulta = conexion.prepareStatement("SELECT * FROM registro WHERE tipo = '0'");   
+            ResultSet rs = consulta.executeQuery();
+            
+            while(rs.next()){
+                c = c + rs.getInt("valor");
+            }
+            
+            return c;
+        }catch(SQLException | ClassNotFoundException ex){
+            System.out.println(ex);
+            return 0;
+        }
+    }
+    
     public int cantMotos(){
         int c = 0;
         try{
@@ -123,6 +129,25 @@ public class IngresoVehiculoDAO {
             
             while(rs.next()){
                 c++;
+            }
+            
+            return c;
+        }catch(SQLException | ClassNotFoundException ex){
+            System.out.println(ex);
+            return 0;
+        }
+    }
+    
+    public int gananciaMotos(){
+        int c = 0;
+        try{
+            Connection conexion = Conexion.obtener();
+            PreparedStatement consulta;
+            consulta = conexion.prepareStatement("SELECT * FROM registro WHERE tipo = '1'");   
+            ResultSet rs = consulta.executeQuery();
+            
+            while(rs.next()){
+                c = c + rs.getInt("valor");
             }
             
             return c;

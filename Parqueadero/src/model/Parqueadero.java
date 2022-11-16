@@ -6,7 +6,7 @@
 package model;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import services.DAO.IngresoVehiculoDAO;
@@ -35,7 +35,6 @@ public class Parqueadero {
     
     public Boolean validarPlaca(String placa){
         IngresoVehiculoDAO iV = new IngresoVehiculoDAO();
-        System.out.println(iV.consultarPlaca(placa));
         return iV.consultarPlaca(placa);
     }
     
@@ -43,12 +42,12 @@ public class Parqueadero {
         try {
             IngresoVehiculo i = new IngresoVehiculo();
         
-            SimpleDateFormat fechaIngreso = new SimpleDateFormat("dd/MM/yyyy"); 
+            SimpleDateFormat fechaIngreso = new SimpleDateFormat("yyyy-MM-dd"); 
 
             i.setPlaca(placa);
             i.setModelo(Integer.parseInt(modelo));
             i.setTipo(tipo(type));
-            i.setFecha(fechaIngreso.parse(fecha));
+            i.setFecha((Date) fechaIngreso.parse(fecha));
             i.setValor(i.getValor());
         
             IngresoVehiculoDAO iV = new IngresoVehiculoDAO();

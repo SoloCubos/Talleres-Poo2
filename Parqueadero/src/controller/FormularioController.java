@@ -6,14 +6,12 @@
 package controller;
 
 import java.net.URL;
-import java.text.ParseException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 import model.Parqueadero;
@@ -59,6 +57,7 @@ public class FormularioController implements Initializable {
         txtCarros.setText(p.cantVehiculos()[0] + " Carros");
         txtMotos.setText(p.cantVehiculos()[1] + " Motos");
         txtTotal.setText(p.cantVehiculos()[2] + " Vehiculos");
+        lblResultado.setText("Presione Totalizar para mostrar los resultados del dia");
     }    
 
     @FXML
@@ -66,7 +65,7 @@ public class FormularioController implements Initializable {
         
         int motos = 0, carros = 0, total = 0;
         
-        if(txtPlaca.getText().isEmpty() || txtModelo.getText().isEmpty() || txtFecha.getText().isEmpty()){
+        if(txtPlaca.getText().isEmpty() || txtModelo.getText().isEmpty() || txtFecha.getText().isEmpty() || cmbTipo.getValue().isEmpty()){
             
             JOptionPane.showMessageDialog(null, "Faltan algunos campos por llenar", "Error!!!!!!!", 0);
         }

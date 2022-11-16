@@ -39,7 +39,7 @@
                         <Text layoutX="30.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" />
                         <TextField fx:id="txtPlaca" layoutX="82.0" layoutY="45.0" prefHeight="25.0" prefWidth="99.0" />
                         <TextField fx:id="txtModelo" layoutX="82.0" layoutY="82.0" prefHeight="25.0" prefWidth="99.0" />
-                        <TextField fx:id="txtFecha" layoutX="82.0" layoutY="121.0" prefHeight="25.0" prefWidth="99.0" promptText="&quot;dd/MM/yyyy&quot;" />
+                        <TextField fx:id="txtFecha" layoutX="82.0" layoutY="121.0" prefHeight="25.0" prefWidth="99.0" promptText="&quot;yyyy-MM-dd&quot;" />
                         <ComboBox fx:id="cmbTipo" layoutX="82.0" layoutY="161.0" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #bde3ff;" />
                         <Button layoutX="28.0" layoutY="199.0" mnemonicParsing="false" onAction="#handleButtonActionAgregar" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #bde3ff;" text="Agregar" />
                         <Button layoutX="114.0" layoutY="199.0" mnemonicParsing="false" onAction="#handleButtonActionLimpiar" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #bde3ff;" text="Limpiar" />
@@ -84,7 +84,7 @@
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <Label fx:id="lblResultado" layoutX="165.0" layoutY="7.0" prefHeight="57.0" prefWidth="254.0" style="-fx-background-color: #fafafa; -fx-border-color: #d6d6d6;" />
+                  <Label fx:id="lblResultado" layoutX="165.0" layoutY="7.0" prefHeight="57.0" prefWidth="254.0" style="-fx-background-color: #fafafa; -fx-border-color: #d6d6d6;" wrapText="true" />
                </children>
             </AnchorPane>
          </children>
