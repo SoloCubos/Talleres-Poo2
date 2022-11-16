@@ -27,52 +27,37 @@ public class Parroquia {
         return instance;
     }
     
+    public boolean cedulaExiste(String cedula){
+        
+        return false;
+    }
+    
     public void guardar(String cedula, String nombre, String direccion, String telefono, String estrato, String estado){
         Feligres efe = new Feligres();
+        
         efe.setCedula(cedula);
         efe.setNombre(nombre);
         efe.setDireccion(direccion);
         efe.setTelefono(telefono);
         efe.setEstrato(Integer.parseInt(estrato));
         efe.setEstado(estado);
-        f.add(efe);
+        efe.calcularDiezmo();
+        
     }
     
     public void eliminar(String cedula){
-        for (int i = 0; i < f.size(); i++) {
-            if(f.get(i).getCedula().equals(cedula)) 
-                f.remove(i);
-            
-        }
+        
     }
     
     public String[] buscar(String cedula){
         String[] datos = new String[6];
-        for (int i = 0; i < f.size(); i++) {
-            if(f.get(i).getCedula().equals(cedula)){
-                String estado = f.get(i).getEstado(); 
-                datos[0] = f.get(i).getCedula();
-                datos[1] = f.get(i).getNombre();
-                datos[2] = f.get(i).getDireccion();
-                datos[3] = f.get(i).getTelefono();
-                datos[4] = "" + f.get(i).getEstrato();
-                datos[5] = estado;
-            }
+        
             
-        }return datos;  
+        return datos;  
     }
     
     public void actualizar(String cedula, String nombre, String direccion, String telefono, String estrato, String estado){  
-        for (int i = 0; i < f.size(); i++) {
-            if(f.get(i).getCedula().equals(cedula)){
-                
-                f.get(i).setNombre(nombre);
-                f.get(i).setDireccion(direccion);
-                f.get(i).setTelefono(telefono);
-                f.get(i).setEstrato(Integer.parseInt(estrato));
-                f.get(i).setEstado(estado);
-            }
-        }
+        
     }
     
     public int totalizar(){   
