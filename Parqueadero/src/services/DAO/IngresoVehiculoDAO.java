@@ -30,7 +30,7 @@ public class IngresoVehiculoDAO {
             if(rs.next()){
                 return true;
             }
-            return false;
+            
         }catch(SQLException | ClassNotFoundException ex){
             System.out.println(ex);
         }return false;
@@ -41,16 +41,20 @@ public class IngresoVehiculoDAO {
             Connection conexion = Conexion.obtener();
             PreparedStatement consulta;
             consulta = conexion.prepareStatement("INSERT INTO registro (placa, fecha, modelo, tipo, valor) " + 
-                                                 "VALUES(" + i.getPlaca() + ", " +
-                                                             i.getFecha() + ", " +
-                                                             i.getModelo() + ", " + 
-                                                             i.getTipo() + "," + 
-                                                             i.getValor() + ")");        
-
+                                                 "VALUES(?, ?, ?, ?, ?)");  
+            
+            consulta.setString(1, i.getPlaca());
+            consulta.setDate(2, i.getFecha());
+            consulta.setInt(3, i.getModelo());
+            consulta.setInt(4, i.getTipo());
+            consulta.setInt(5, i.getValor());
+            
             consulta.executeUpdate();
+            
             return true;
         }catch(SQLException | ClassNotFoundException ex){
-            System.out.println(ex);
+            //System.out.println(ex);
+            
             return false;
         }
     }

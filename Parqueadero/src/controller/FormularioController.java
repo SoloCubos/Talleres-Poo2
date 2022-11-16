@@ -94,6 +94,7 @@ public class FormularioController implements Initializable {
         txtModelo.clear();
         txtFecha.clear();
         cmbTipo.setValue(null);
+        
     }
 
     @FXML
@@ -110,12 +111,16 @@ public class FormularioController implements Initializable {
         txtTotal.setText(p.cantVehiculos()[2] + " Vehiculos");
         
         lblResultado.setText(p.totalizar());
+        
+        JOptionPane.showMessageDialog(null, "Se ha Vaciado la base de datos", "Opearción Exitosa!!!!!!!", 1);
     }
 
     @FXML
     private void handleButtonActionTotalizar(ActionEvent event) {
        String resultado = p.totalizar();
        lblResultado.setText(resultado);
+       
+       JOptionPane.showMessageDialog(null, "Correcto", "Opearción Exitosa!!!!!!!", 1);
     }
     
 }
