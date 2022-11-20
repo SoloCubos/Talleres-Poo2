@@ -24,7 +24,7 @@ public class FeligresDAO {
             Connection conexion = Conexion.obtener();
             PreparedStatement consulta;
             
-            consulta = conexion.prepareStatement("SELECT * FROM registro WHERE cedula = " + cedula);        
+            consulta = conexion.prepareStatement("SELECT * FROM feligres WHERE cedula = " + cedula);        
 
             ResultSet rs = consulta.executeQuery();
             if(rs.next()){
@@ -40,7 +40,7 @@ public class FeligresDAO {
         try{
             Connection conexion = Conexion.obtener();
             PreparedStatement consulta;
-            consulta = conexion.prepareStatement("INSERT INTO registro "
+            consulta = conexion.prepareStatement("INSERT INTO feligres "
                                               + "(cedula, nombre, direccion, telefono, estrato, estado, diezmo) " + 
                                                  "VALUES(?, ?, ?, ?, ?, ? ,?)");  
             consulta.setString(1, f.getCedula());
@@ -58,15 +58,14 @@ public class FeligresDAO {
             System.out.println(ex);     
             return false;
         }
-    }
-   
+    }  
     
     public Feligres mostrarDatosFeligres(String cedula){
         try{
             Feligres f = new Feligres();
             Connection conexion = Conexion.obtener();
             PreparedStatement consulta;
-            consulta = conexion.prepareStatement("SELECT * FROM registro WHERE cedula = " + cedula);        
+            consulta = conexion.prepareStatement("SELECT * FROM feligres WHERE cedula = " + cedula);        
             ResultSet rs = consulta.executeQuery();
             
             if(rs.next()){
@@ -82,10 +81,31 @@ public class FeligresDAO {
         }catch(SQLException | ClassNotFoundException ex){
             System.out.println(ex);
             return null;
-        }
-        
-       
+        } 
     }
+    
+    public boolean Actualizar(Feligres f){
+        try{
+            Connection conexion = Conexion.obtener();
+            PreparedStatement consulta;
+            
+            consulta = conexion.prepareStatement("UPDATE feligres SET nombre = " + f.getNombre() + 
+                                                                   ", direccion = " + f.getDireccion() + 
+                                                                   ", telefono = " + f.getTelefono() +
+                                                                   ", estrato = " + f.getEstrato() +
+                                                                   ", estado = " + f.getEstado() + 
+                                                                   ", diezmo = " + f.getDiezmo() +
+                                                                   "WHERE cedula = " + f.getCedula());       
+            
+            consulta.executeUpdate();
+            
+            return true;
+        }catch(SQLException | ClassNotFoundException ex){
+            System.out.println(ex);
+            return false;
+        }
+    }
+    
     public ArrayList<Feligres> mostrarFeligreses(String cedula){
         try{
             Feligres f = new Feligres();
@@ -119,7 +139,7 @@ public class FeligresDAO {
         try{
             Connection conexion = Conexion.obtener();
             PreparedStatement consulta;
-            consulta = conexion.prepareStatement("DELETE FROM registro WHERE cedula = " + cedula);        
+            consulta = conexion.prepareStatement("DELETE FROM feligres WHERE cedula = " + cedula);        
             consulta.executeUpdate();
             return true;
         }catch(SQLException | ClassNotFoundException ex){
