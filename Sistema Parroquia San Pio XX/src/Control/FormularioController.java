@@ -60,24 +60,24 @@ public class FormularioController implements Initializable {
 
     @FXML
     private void handleActionConsultar(ActionEvent event) {
-        if(!txtCelula.getText().isEmpty()){
-            if(p.existe(txtCelula.getText())){
+        if(txtCelula.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Introduzca la cedula para conocer cuanto debe pagar", "Error!!!", JOptionPane.ERROR_MESSAGE);
+        }else if(p.cedulaExiste(txtCelula.getText())){
                 String pagar = p.consultar(txtCelula.getText());
                 JOptionPane.showMessageDialog(null, "Consulta Exitosa, acontinuacion puede pagar", "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
                 txtPague.setText(pagar);
-            }else{
-                txtCelula.clear();
-                JOptionPane.showMessageDialog(null, "El feligrés no existe", "Error!!!", JOptionPane.ERROR_MESSAGE);
-            }    
         }else{
-            JOptionPane.showMessageDialog(null, "Introduzca la cedula para conocer cuanto debe pagar", "Error!!!", JOptionPane.ERROR_MESSAGE);
+            txtCedula.setText(txtCelula.getText());
+            txtCelula.clear();
+            JOptionPane.showMessageDialog(null, "El feligrés no existe, registrelo", "Error!!!", JOptionPane.ERROR_MESSAGE);
         }
+   
     }
 
     @FXML
     private void handleActionPagar(ActionEvent event) {
         if(!txtCelula.getText().isEmpty()){
-            if(p.existe(txtCelula.getText())){
+            if(p.cedulaExiste(txtCelula.getText())){
                 p.pagar(txtCelula.getText());
                 String pagar = p.consultar(txtCelula.getText());
                 JOptionPane.showMessageDialog(null, "Su pago se ha registrado exitosamente", "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
@@ -129,7 +129,7 @@ public class FormularioController implements Initializable {
     @FXML
     private void handleActionEliminar(ActionEvent event) {
         if(!txtCedula.getText().isEmpty()){
-            if(p.existe(txtCedula.getText())){
+            if(p.cedulaExiste(txtCedula.getText())){
                 p.eliminar(txtCedula.getText());
                 JOptionPane.showMessageDialog(null, "Se ha eliminado correctamente el feligrés", "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
                 txtCedula.clear();
@@ -159,7 +159,7 @@ public class FormularioController implements Initializable {
     @FXML
     private void handleActionBuscar(ActionEvent event) {
         if(!txtCedula.getText().isEmpty()){
-            if(p.existe(txtCedula.getText())){
+            if(p.cedulaExiste(txtCedula.getText())){
                 String[] datos = p.buscar(txtCedula.getText());
                 JOptionPane.showMessageDialog(null, "Feligrés encontrado, a continuación puede editar sus datos", "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
                 txtCedula.setText(datos[0]);
@@ -183,27 +183,9 @@ public class FormularioController implements Initializable {
                 
         if(!(txtCedula.getText().isEmpty() || txtNombre.getText().isEmpty() || txtDireccion.getText().isEmpty() || 
            txtTelefono.getText().isEmpty() || txtEstrato.getText().isEmpty() || cmbEstado.getValue().isEmpty())){
-            if(p.existe(txtCedula.getText())){
-                p.actualizar(txtCedula.getText(), txtNombre.getText(), txtDireccion.getText(), txtTelefono.getText(), txtEstrato.getText(), cmbEstado.getValue());;
-
-                JOptionPane.showMessageDialog(null, "Se han actualizado correctamente los datos de feligrés", "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-                txtCedula.clear();
-                txtNombre.clear();
-                txtDireccion.clear();
-                txtTelefono.clear();
-                txtEstrato.clear();
-                cmbEstado.setValue(null);
-
-                myListView.getItems().clear();
-                myListView.getItems().addAll(p.resultados());
-            }else{
-                txtCedula.clear();
-                JOptionPane.showMessageDialog(null, "El feligrés no existe", "Error!!!", JOptionPane.ERROR_MESSAGE);
-            }
-            
             
         }else{
-            JOptionPane.showMessageDialog(null, "Debe introducir todos los campos marcados con *", "Error!!!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Los datos marcados con * son obligatorios", "Error!!!", JOptionPane.ERROR_MESSAGE);
         }
     }  
 }

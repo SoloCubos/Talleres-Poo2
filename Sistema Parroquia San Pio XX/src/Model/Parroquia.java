@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Services.DAO.FeligresDAO;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,6 @@ import java.util.ArrayList;
  * @author solan
  */
 public class Parroquia {
-    private ArrayList<Feligres> f = new ArrayList<>();
     
     private int totalDiezmos;
     
@@ -32,17 +32,20 @@ public class Parroquia {
         return false;
     }
     
-    public void guardar(String cedula, String nombre, String direccion, String telefono, String estrato, String estado){
-        Feligres efe = new Feligres();
+    public boolean guardar(String cedula, String nombre, String direccion, String telefono, String estrato, String estado){
+        Feligres f = new Feligres();
         
-        efe.setCedula(cedula);
-        efe.setNombre(nombre);
-        efe.setDireccion(direccion);
-        efe.setTelefono(telefono);
-        efe.setEstrato(Integer.parseInt(estrato));
-        efe.setEstado(estado);
-        efe.calcularDiezmo();
+        f.setCedula(cedula);
+        f.setNombre(nombre);
+        f.setDireccion(direccion);
+        f.setTelefono(telefono);
+        f.setEstrato(Integer.parseInt(estrato));
+        f.setEstado(estado);
+        f.calcularDiezmo();
         
+        FeligresDAO fD = new FeligresDAO();
+ 
+        return fD.guardar(f);
     }
     
     public void eliminar(String cedula){
@@ -65,40 +68,20 @@ public class Parroquia {
     }
     
     public void pagar(String cedula){
-        for (int i = 0; i < f.size(); i++) {
-            if(f.get(i).getCedula().equals(cedula)){
-                f.get(i).setEstado("Cumplido");
-                f.get(i).setDiezmo(0);
-            }
-            
-        }
+        
     }
     
     public String consultar(String cedula){
         int diezmo = 0;
-        for (int i = 0; i < f.size(); i++) {
-            if(f.get(i).getCedula().equals(cedula)){
-                f.get(i).calcularDiezmo();
-                diezmo = f.get(i).getDiezmo();
-                totalDiezmos = totalDiezmos + diezmo;
-            }        
-        }return "$" + diezmo;
+        
+        totalDiezmos = totalDiezmos + diezmo;
+        return "$" + diezmo;          
     }
+    
     
     public ArrayList<String> resultados(){
         ArrayList<String> r = new ArrayList<>();
-        for (int i = 0; i < f.size(); i++) {
-            r.add(i, f.get(i).toString());
-        }return r; 
-    }
-    
-    public boolean existe(String cedula){
-        boolean e =  false;
-        for (int i = 0; i < f.size() && e == false; i++) {
-            if(f.get(i).getCedula().equals(cedula)){
-                e = true;
-            }      
-        }System.out.println(e);
-        return e;
+        
+        return r; 
     }
 }
