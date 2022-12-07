@@ -69,6 +69,8 @@ public class MainViewController implements Initializable {
     private ListView<String> listViewEquiposGoles;
     @FXML
     private ListView<String> listViewEquiposMasGanadores;
+    @FXML
+    private ComboBox<String> cmbSeleccionesEliminar;
 
     private Qatar2022 q;
     /**
@@ -78,6 +80,8 @@ public class MainViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         cmbContinentes1.getItems().addAll(q.listaContinentes());
         cmbContinentes11.getItems().addAll(q.listaContinentes());
+        cmbIdSelecciones.getItems().addAll(q.listaSeleccionesCorta());
+        cmbSeleccionesEliminar.getItems().addAll(q.listaSeleccionesLarga());
     }    
 
     public MainViewController() {
@@ -95,14 +99,16 @@ public class MainViewController implements Initializable {
             
             JOptionPane.showMessageDialog(null, "Se ha agregado el continente a la base de datos", "Exito!!", 1);
             
+            cmbContinentes1.getItems().clear();
+            cmbContinentes11.getItems().clear();
+        
             cmbContinentes1.getItems().addAll(q.listaContinentes());
             cmbContinentes11.getItems().addAll(q.listaContinentes());
+
             txtIdContinente.setText(null);
             txtNombreContinente.setText(null);
             
-        }else JOptionPane.showMessageDialog(null, "Hubo un error, revise los datos e intentelo de nuevo", "Error!!!", 0);
-        
-        
+        }else JOptionPane.showMessageDialog(null, "Hubo un error, revise los datos e intentelo de nuevo", "Error!!!", 0); 
     }
 
     @FXML
@@ -110,7 +116,7 @@ public class MainViewController implements Initializable {
         
         txtIdContinente.setText(null);
         txtNombreContinente.setText(null);
-        JOptionPane.showMessageDialog(null, "Se ha limpiado el formulario", "Exito!!", 1);
+        
     }
 
     @FXML
@@ -125,6 +131,12 @@ public class MainViewController implements Initializable {
             JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error!!!", 0);
             
         }else if(q.registrarSeleccion(txtIdSeleccion1.getText(), txtNombreSeleccion1.getText(), cmbContinentes1.getValue(), txtTecnico1.getText(), txtGolesFavor1.getText(), txtGolesContra1.getText(), txtPartidosGanados1.getText(), txtPartidosPerdidos1.getText(), txtPartidosJugados1.getText())){
+            
+            cmbIdSelecciones.getItems().clear();
+            cmbIdSelecciones.getItems().addAll(q.listaSeleccionesCorta());
+            
+            cmbSeleccionesEliminar.getItems().clear();
+            cmbSeleccionesEliminar.getItems().addAll(q.listaSeleccionesLarga());
             
             JOptionPane.showMessageDialog(null, "Se ha agregado el continente a la base de datos", "Exito!!", 1);
             
@@ -180,6 +192,11 @@ public class MainViewController implements Initializable {
         }else if(q.registrarSeleccion(txtIdSeleccion1.getText(), txtNombreSeleccion1.getText(), cmbContinentes1.getValue(), txtTecnico1.getText(), txtGolesFavor1.getText(), txtGolesContra1.getText(), txtPartidosGanados1.getText(), txtPartidosPerdidos1.getText(), txtPartidosJugados1.getText())){
             
             JOptionPane.showMessageDialog(null, "Se han actualizado los Datos de la seleccion", "Exito!!", 1);
+            cmbIdSelecciones.getItems().clear();
+            cmbIdSelecciones.getItems().addAll(q.listaSeleccionesCorta());
+            
+            cmbSeleccionesEliminar.getItems().clear();
+            cmbSeleccionesEliminar.getItems().addAll(q.listaSeleccionesLarga());
             
             txtIdSeleccion1.setText(null);
             txtNombreSeleccion1.setText(null);
@@ -196,15 +213,32 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void listarSelecciones(ActionEvent event) {
+        myListView.getItems().addAll(q.listaSeleccionesLarga());
     }
 
     @FXML
     private void eliminarSeleccion(ActionEvent event) {
         
+        if(cmbSeleccionesEliminar.getValue().isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, "Seleccione una Seleccion", "Error!!!", 0);
+            
+        }else if(q.eliminarSeleccion(cmbSeleccionesEliminar.getValue())){
+            
+            cmbIdSelecciones.getItems().clear();
+            cmbIdSelecciones.getItems().addAll(q.listaSeleccionesCorta());
+            
+            JOptionPane.showMessageDialog(null, "Se ha eliminado la selección: " + cmbSeleccionesEliminar.getValue(), "Exito!!", 1);
+            
+            cmbSeleccionesEliminar.setValue(null);
+            cmbSeleccionesEliminar.getItems().clear();
+            cmbSeleccionesEliminar.getItems().addAll(q.listaSeleccionesLarga());
+     
+        }else JOptionPane.showMessageDialog(null, "Ha ocurrido un error, revise su selección", "Error!!!", 0);
     }
 
     @FXML
     private void listarEquipos(ActionEvent event) {
-    }
-    
+        
+    }  
 }

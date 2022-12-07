@@ -37,7 +37,7 @@ public class Qatar2022 {
         ContinenteDAO DAO = new ContinenteDAO();
         if (DAO.listaContinentes() != null){
             for (int i = 0; i < DAO.listaContinentes().size(); i++) {
-                Continente c = new Continente();
+                
                 cA.add(DAO.listaContinentes().get(i).getId() + " - " + DAO.listaContinentes().get(i).getNombre());
             }
         }       
@@ -55,6 +55,7 @@ public class Qatar2022 {
         s.setId(Integer.parseInt(id));
         s.setNombre(nombre);
         s.setContinente(c);
+        s.setTecnico(tecnico);
         s.setGolesFavor(Integer.parseInt(golesFavor));
         s.setGolesContra(Integer.parseInt(golesContra));
         s.setPartidosGanados(Integer.parseInt(partidosGanados));
@@ -89,8 +90,7 @@ public class Qatar2022 {
         ArrayList<String> sA = new ArrayList<>();
         SeleccionDAO DAO = new SeleccionDAO();
         if (DAO.listaSelecciones() != null){
-            for (int i = 0; i < DAO.listaSelecciones().size(); i++) {
-                Continente c = new Continente();
+            for (int i = 0; i < DAO.listaSelecciones().size(); i++) {              
                 sA.add(DAO.listaSelecciones().get(i).getId() + " - " + DAO.listaSelecciones().get(i).getNombre());
             }
         }  
@@ -101,8 +101,7 @@ public class Qatar2022 {
         ArrayList<String> sA = new ArrayList<>();
         SeleccionDAO DAO = new SeleccionDAO();
         if (DAO.listaSelecciones() != null){
-            for (int i = 0; i < DAO.listaSelecciones().size(); i++) {
-                Continente c = new Continente();
+            for (int i = 0; i < DAO.listaSelecciones().size(); i++) {               
                 sA.add(DAO.listaSelecciones().get(i).toString());
             }
         }  
@@ -111,6 +110,6 @@ public class Qatar2022 {
     
     public boolean eliminarSeleccion(String id){
         SeleccionDAO DAO = new SeleccionDAO();
-        return DAO.eliminar(Integer.parseInt(id));
+        return DAO.eliminar(Integer.parseInt(id.charAt(4) + ""));
     }
 }

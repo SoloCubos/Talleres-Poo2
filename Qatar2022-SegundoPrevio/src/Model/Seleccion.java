@@ -97,7 +97,9 @@ public class Seleccion {
 
     @Override
     public String toString() {
-        return "Seleccion{" + "id=" + id + ", nombre=" + nombre + ", continente=" + continente.toString() + ", tecnico=" + tecnico + ", golesFavor=" + golesFavor + ", golesContra=" + golesContra + ", partidosGanados=" + partidosGanados + ", partidosPerdidos=" + partidosPerdidos + ", partidosJugados=" + partidosJugados + '}';
+        return "ID: " + getId() + ", Nombre: " + getNombre() + ", Tecnico: " + getTecnico() + 
+               ", (" + getGolesFavor() + " Goles a favor y " + getGolesContra() + " en contra: "  +
+               "), (" + getPartidosGanados() + " Partidos ganados, " + getPartidosPerdidos() + " perdidos, y " + getPartidosJugados() + " jugados)";
     }
     
     

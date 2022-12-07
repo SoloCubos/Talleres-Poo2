@@ -28,7 +28,7 @@ public class ContinenteDAO {
             
             consulta.setInt(1, c.getId());
             consulta.setString(2, c.getNombre());
-            System.out.println("PENE");
+            
             consulta.executeUpdate();
             
             return true;

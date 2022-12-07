@@ -41,7 +41,7 @@ public class SeleccionDAO {
             
             return true;
         }catch(SQLException | ClassNotFoundException ex){
-            //System.out.println(ex);
+            System.out.println(ex);
             
             return false;
         }
@@ -51,7 +51,7 @@ public class SeleccionDAO {
         try{
             Connection conexion = Conexion.obtener();
             PreparedStatement consulta;
-            consulta = conexion.prepareStatement("DELETE FROM selecion WHERE id = " + id);        
+            consulta = conexion.prepareStatement("DELETE FROM seleccion WHERE id = " + id);        
             consulta.executeUpdate();
             return true;
         }catch(SQLException | ClassNotFoundException ex){
@@ -98,7 +98,7 @@ public class SeleccionDAO {
                 
                 Seleccion s = new Seleccion();
                 ContinenteDAO DAO = new ContinenteDAO();
-                Continente c = DAO.getContinente(rs.getInt("id_seleccion"));
+                Continente c = DAO.getContinente(rs.getInt("continente_id"));
                 
                 s.setId(rs.getInt("id"));
                 s.setNombre(rs.getString("nombre"));
@@ -129,7 +129,7 @@ public class SeleccionDAO {
             
             ContinenteDAO DAO = new ContinenteDAO();
             Seleccion s = new Seleccion();
-            Continente c = DAO.getContinente(rs.getInt("id_seleccion"));
+            Continente c = DAO.getContinente(rs.getInt("continente_id"));
                 
             if(rs.next()){
 
