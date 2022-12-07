@@ -128,7 +128,7 @@
                   <TextField fx:id="txtPartidosGanados11" layoutX="537.0" layoutY="54.0" prefHeight="25.0" prefWidth="76.0" />
                   <TextField fx:id="txtPartidosPerdidos11" layoutX="537.0" layoutY="96.0" prefHeight="25.0" prefWidth="76.0" />
                   <TextField fx:id="txtPartidosJugados11" layoutX="537.0" layoutY="135.0" prefHeight="25.0" prefWidth="76.0" />
-                  <Button layoutX="324.0" layoutY="185.0" mnemonicParsing="false" onAction="#registrarSeleccion" prefHeight="25.0" prefWidth="114.0" text="Actualizar" />
+                  <Button layoutX="324.0" layoutY="185.0" mnemonicParsing="false" onAction="#actualizarSeleccion" prefHeight="25.0" prefWidth="114.0" text="Actualizar" />
                   <Button layoutX="477.0" layoutY="185.0" mnemonicParsing="false" onAction="#limpiarFormularioSelecion" prefHeight="25.0" prefWidth="114.0" text="Limpiar Campos" />
                   <Separator layoutX="297.0" layoutY="17.0" orientation="VERTICAL" prefHeight="200.0" />
                   <Separator layoutX="445.0" layoutY="17.0" orientation="VERTICAL" prefHeight="154.0" prefWidth="2.0" />

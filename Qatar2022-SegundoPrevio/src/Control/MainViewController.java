@@ -86,14 +86,20 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void registrarContinente(ActionEvent event) {
+        
         if(txtIdContinente.getText().isEmpty() || txtNombreContinente.getText().isEmpty()){
+            
             JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error!!!", 0);
+            
         }else if(q.registrarContinente(txtIdContinente.getText(), txtNombreContinente.getText())){
+            
             JOptionPane.showMessageDialog(null, "Se ha agregado el continente a la base de datos", "Exito!!", 1);
+            
             cmbContinentes1.getItems().addAll(q.listaContinentes());
             cmbContinentes11.getItems().addAll(q.listaContinentes());
             txtIdContinente.setText(null);
             txtNombreContinente.setText(null);
+            
         }else JOptionPane.showMessageDialog(null, "Hubo un error, revise los datos e intentelo de nuevo", "Error!!!", 0);
         
         
@@ -101,6 +107,7 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void limpiarFormularioContinente(ActionEvent event) {
+        
         txtIdContinente.setText(null);
         txtNombreContinente.setText(null);
         JOptionPane.showMessageDialog(null, "Se ha limpiado el formulario", "Exito!!", 1);
@@ -109,13 +116,82 @@ public class MainViewController implements Initializable {
     @FXML
     private void registrarSeleccion(ActionEvent event) {
         
-        
-        q.registrarSeleccion(txtIdSeleccion1.getText(), txtNombreSeleccion1.getText(), cmbContinentes1.getValue(), txtTecnico1.getText(), txtGolesFavor1.getText(), txtGolesContra1.getText(), txtPartidosGanados1.getText(), txtPartidosPerdidos1.getText(), txtPartidosJugados1.getText());
+        if(txtIdSeleccion1.getText().isEmpty() || txtNombreSeleccion1.getText().isEmpty() ||
+           cmbContinentes1.getValue().isEmpty() || txtTecnico1.getText().isEmpty() || 
+           txtGolesFavor1.getText().isEmpty() || txtGolesContra1.getText().isEmpty() || 
+           txtPartidosGanados1.getText().isEmpty() || txtPartidosPerdidos1.getText().isEmpty() || 
+           txtPartidosJugados1.getText().isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error!!!", 0);
+            
+        }else if(q.registrarSeleccion(txtIdSeleccion1.getText(), txtNombreSeleccion1.getText(), cmbContinentes1.getValue(), txtTecnico1.getText(), txtGolesFavor1.getText(), txtGolesContra1.getText(), txtPartidosGanados1.getText(), txtPartidosPerdidos1.getText(), txtPartidosJugados1.getText())){
+            
+            JOptionPane.showMessageDialog(null, "Se ha agregado el continente a la base de datos", "Exito!!", 1);
+            
+            txtIdSeleccion1.setText(null);
+            txtNombreSeleccion1.setText(null);
+            txtTecnico1.setText(null);
+            txtGolesFavor1.setText(null);
+            txtGolesContra1.setText(null);
+            txtPartidosGanados1.setText(null);
+            txtPartidosPerdidos1.setText(null);
+            txtPartidosJugados1.setText(null);
+            cmbContinentes1.setValue(null);
+            
+       }else JOptionPane.showMessageDialog(null, "Hubo un error, revise los datos e intentelo de nuevo", "Error!!!", 0);
         
     }
 
     @FXML
     private void limpiarFormularioSelecion(ActionEvent event) {
+        
+        txtIdSeleccion1.setText(null);
+        txtNombreSeleccion1.setText(null);
+        txtTecnico1.setText(null);
+        txtGolesFavor1.setText(null);
+        txtGolesContra1.setText(null);
+        txtPartidosGanados1.setText(null);
+        txtPartidosPerdidos1.setText(null);
+        txtPartidosJugados1.setText(null);
+        cmbContinentes1.setValue(null);
+        
+        cmbIdSelecciones.setValue(null);
+        txtNombreSeleccion11.setText(null);
+        txtTecnico11.setText(null);
+        txtGolesFavor11.setText(null);
+        txtGolesContra11.setText(null);
+        txtPartidosGanados11.setText(null);
+        txtPartidosPerdidos11.setText(null);
+        txtPartidosJugados11.setText(null);
+        cmbContinentes11.setValue(null);
+    }
+    
+    @FXML
+    private void actualizarSeleccion(ActionEvent event){
+        
+        if(cmbIdSelecciones.getValue().isEmpty() || txtNombreSeleccion11.getText().isEmpty() ||
+           cmbContinentes11.getValue().isEmpty() || txtTecnico11.getText().isEmpty() || 
+           txtGolesFavor11.getText().isEmpty() || txtGolesContra11.getText().isEmpty() || 
+           txtPartidosGanados11.getText().isEmpty() || txtPartidosPerdidos11.getText().isEmpty() || 
+           txtPartidosJugados11.getText().isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error!!!", 0);
+            
+        }else if(q.registrarSeleccion(txtIdSeleccion1.getText(), txtNombreSeleccion1.getText(), cmbContinentes1.getValue(), txtTecnico1.getText(), txtGolesFavor1.getText(), txtGolesContra1.getText(), txtPartidosGanados1.getText(), txtPartidosPerdidos1.getText(), txtPartidosJugados1.getText())){
+            
+            JOptionPane.showMessageDialog(null, "Se han actualizado los Datos de la seleccion", "Exito!!", 1);
+            
+            txtIdSeleccion1.setText(null);
+            txtNombreSeleccion1.setText(null);
+            txtTecnico1.setText(null);
+            txtGolesFavor1.setText(null);
+            txtGolesContra1.setText(null);
+            txtPartidosGanados1.setText(null);
+            txtPartidosPerdidos1.setText(null);
+            txtPartidosJugados1.setText(null);
+            cmbContinentes1.setValue(null);
+            
+       }else JOptionPane.showMessageDialog(null, "Hubo un error, revise los datos e intentelo de nuevo", "Error!!!", 0);
     }
 
     @FXML
@@ -124,6 +200,7 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void eliminarSeleccion(ActionEvent event) {
+        
     }
 
     @FXML

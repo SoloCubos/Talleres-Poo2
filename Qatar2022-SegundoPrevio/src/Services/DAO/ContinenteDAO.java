@@ -68,8 +68,6 @@ public class ContinenteDAO {
     
     public Continente getContinente(int id){
         try{
-            
-            ArrayList<Continente> cA = new ArrayList<>();
             Connection conexion = Conexion.obtener();
             PreparedStatement consulta;
             consulta = conexion.prepareStatement("SELECT * FROM continente WHERE id = " + id);        

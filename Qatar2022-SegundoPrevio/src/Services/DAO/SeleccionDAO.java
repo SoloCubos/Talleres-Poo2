@@ -95,12 +95,14 @@ public class SeleccionDAO {
             
             
             while(rs.next()){
-                Continente n = new Continente();
+                
                 Seleccion s = new Seleccion();
+                ContinenteDAO DAO = new ContinenteDAO();
+                Continente c = DAO.getContinente(rs.getInt("id_seleccion"));
+                
                 s.setId(rs.getInt("id"));
                 s.setNombre(rs.getString("nombre"));
-                n.setId(rs.getInt("continente_id"));
-                s.setContinente(n);
+                s.setContinente(c);
                 s.setTecnico(rs.getString("tecnico"));
                 s.setGolesFavor(rs.getInt("goles_favor"));
                 s.setGolesContra(rs.getInt("goles_contra"));
@@ -112,6 +114,36 @@ public class SeleccionDAO {
                 
             }
             return sA;
+        }catch(SQLException | ClassNotFoundException ex){
+            System.out.println(ex);
+            return null;
+        }
+    }
+    
+    public Seleccion getSeleccion(int id){
+        try{
+            Connection conexion = Conexion.obtener();
+            PreparedStatement consulta;
+            consulta = conexion.prepareStatement("SELECT * FROM continente WHERE id = " + id);        
+            ResultSet rs = consulta.executeQuery();
+            
+            ContinenteDAO DAO = new ContinenteDAO();
+            Seleccion s = new Seleccion();
+            Continente c = DAO.getContinente(rs.getInt("id_seleccion"));
+                
+            if(rs.next()){
+
+                s.setId(rs.getInt("id"));
+                s.setNombre(rs.getString("nombre"));
+                s.setContinente(c);
+                s.setTecnico(rs.getString("tecnico"));
+                s.setGolesFavor(rs.getInt("goles_favor"));
+                s.setGolesContra(rs.getInt("goles_contra"));
+                s.setPartidosGanados(rs.getInt("partidos_ganados"));
+                s.setPartidosPerdidos(rs.getInt("partidos_perdidos"));
+                s.setPartidosJugados(rs.getInt("partidos_jugados"));
+            }
+            return s;
         }catch(SQLException | ClassNotFoundException ex){
             System.out.println(ex);
             return null;
