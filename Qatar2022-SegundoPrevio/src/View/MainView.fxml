@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="263.0" prefWidth="690.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.MainViewController">
+  <tabs>
+      <Tab closable="false" text="Registrar Continente">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Text layoutX="105.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro Continentes">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="188.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id Continente: (int)" />
+                  <Text layoutX="178.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Continente:" />
+                  <TextField fx:id="txtIdContinente" layoutX="311.0" layoutY="76.0" />
+                  <TextField fx:id="txtNombreContinente" layoutX="311.0" layoutY="114.0" />
+                  <Button layoutX="107.0" layoutY="163.0" mnemonicParsing="false" onAction="#registrarContinente" prefHeight="25.0" prefWidth="191.0" text="Registrar Continente" />
+                  <Button layoutX="345.0" layoutY="163.0" mnemonicParsing="false" onAction="#limpiarFormularioContinente" prefHeight="25.0" prefWidth="189.0" text="Limpiar Formulario" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+    <Tab closable="false" text="Registrar Selección">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="263.0" prefWidth="600.0">
+               <children>
+                  <Text layoutX="88.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Seleccion">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="79.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id: (int)" />
+                  <Text layoutX="67.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
+                  <Text layoutX="51.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Continente:" />
+                  <Text layoutX="69.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tecnico:" />
+                  <Text layoutX="323.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A Favor:" />
+                  <Text layoutX="477.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ganados:" />
+                  <Text layoutX="317.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En Contra:" />
+                  <Text layoutX="516.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Partidos">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="477.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Perdidos:" />
+                  <TextField fx:id="txtIdSeleccion1" layoutX="126.0" layoutY="54.0" />
+                  <TextField fx:id="txtNombreSeleccion1" layoutX="126.0" layoutY="96.0" />
+                  <TextField fx:id="txtTecnico1" layoutX="126.0" layoutY="175.0" />
+                  <TextField fx:id="txtGolesFavor1" layoutX="380.0" layoutY="54.0" prefHeight="25.0" prefWidth="51.0" />
+                  <Text layoutX="350.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goles:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <ComboBox fx:id="cmbContinentes1" layoutX="126.0" layoutY="135.0" prefWidth="150.0" />
+                  <TextField fx:id="txtGolesContra1" layoutX="380.0" layoutY="96.0" prefHeight="25.0" prefWidth="51.0" />
+                  <Text layoutX="478.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jugados:" />
+                  <TextField fx:id="txtPartidosGanados1" layoutX="537.0" layoutY="54.0" prefHeight="25.0" prefWidth="76.0" />
+                  <TextField fx:id="txtPartidosPerdidos1" layoutX="537.0" layoutY="96.0" prefHeight="25.0" prefWidth="76.0" />
+                  <TextField fx:id="txtPartidosJugados1" layoutX="537.0" layoutY="135.0" prefHeight="25.0" prefWidth="76.0" />
+                  <Button layoutX="324.0" layoutY="185.0" mnemonicParsing="false" onAction="#registrarSeleccion" prefHeight="25.0" prefWidth="114.0" text="Registrar" />
+                  <Button layoutX="477.0" layoutY="185.0" mnemonicParsing="false" onAction="#limpiarFormularioSelecion" prefHeight="25.0" prefWidth="114.0" text="Limpiar Campos" />
+                  <Separator layoutX="297.0" layoutY="17.0" orientation="VERTICAL" prefHeight="200.0" />
+                  <Separator layoutX="445.0" layoutY="17.0" orientation="VERTICAL" prefHeight="154.0" prefWidth="2.0" />
+                  <Separator layoutX="301.0" layoutY="172.0" prefHeight="1.0" prefWidth="318.0" />
+               </children>
+            </AnchorPane>
+         </content>
+    </Tab>
+    <Tab closable="false" text="Listar Selecciones">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="myListView" layoutX="12.0" layoutY="46.0" prefHeight="174.0" prefWidth="666.0" />
+                  <Text layoutX="24.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista de Selecciones Registradas:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="301.0" layoutY="12.0" mnemonicParsing="false" onAction="#listarSelecciones" prefHeight="25.0" prefWidth="101.0" text="Listar" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="Actualizar datos Seleccion">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="263.0" prefWidth="600.0">
+               <children>
+                  <Text layoutX="79.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actualizar una Seleccion">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="79.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id: (int)" />
+                  <Text layoutX="67.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
+                  <Text layoutX="51.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Continente:" />
+                  <Text layoutX="69.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tecnico:" />
+                  <Text layoutX="323.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A Favor:" />
+                  <Text layoutX="477.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ganados:" />
+                  <Text layoutX="317.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="En Contra:" />
+                  <Text layoutX="516.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Partidos">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="477.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Perdidos:" />
+                  <TextField fx:id="txtNombreSeleccion11" layoutX="126.0" layoutY="96.0" />
+                  <TextField fx:id="txtTecnico11" layoutX="126.0" layoutY="175.0" />
+                  <TextField fx:id="txtGolesFavor11" layoutX="380.0" layoutY="54.0" prefHeight="25.0" prefWidth="51.0" />
+                  <Text layoutX="350.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goles:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <ComboBox fx:id="cmbContinentes11" layoutX="126.0" layoutY="135.0" prefWidth="150.0" />
+                  <TextField fx:id="txtGolesContra11" layoutX="380.0" layoutY="96.0" prefHeight="25.0" prefWidth="51.0" />
+                  <Text layoutX="478.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jugados:" />
+                  <TextField fx:id="txtPartidosGanados11" layoutX="537.0" layoutY="54.0" prefHeight="25.0" prefWidth="76.0" />
+                  <TextField fx:id="txtPartidosPerdidos11" layoutX="537.0" layoutY="96.0" prefHeight="25.0" prefWidth="76.0" />
+                  <TextField fx:id="txtPartidosJugados11" layoutX="537.0" layoutY="135.0" prefHeight="25.0" prefWidth="76.0" />
+                  <Button layoutX="324.0" layoutY="185.0" mnemonicParsing="false" onAction="#registrarSeleccion" prefHeight="25.0" prefWidth="114.0" text="Actualizar" />
+                  <Button layoutX="477.0" layoutY="185.0" mnemonicParsing="false" onAction="#limpiarFormularioSelecion" prefHeight="25.0" prefWidth="114.0" text="Limpiar Campos" />
+                  <Separator layoutX="297.0" layoutY="17.0" orientation="VERTICAL" prefHeight="200.0" />
+                  <Separator layoutX="445.0" layoutY="17.0" orientation="VERTICAL" prefHeight="154.0" prefWidth="2.0" />
+                  <Separator layoutX="301.0" layoutY="172.0" prefHeight="1.0" prefWidth="318.0" />
+                  <ComboBox fx:id="cmbIdSelecciones" layoutX="126.0" layoutY="54.0" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Eliminar Seleccion">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ComboBox layoutX="146.0" layoutY="61.0" prefHeight="25.0" prefWidth="514.0" />
+                  <Text layoutX="26.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elija una Seleccion:" />
+                  <Text layoutX="243.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eliminar una Selección">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="203.0" layoutY="179.0" mnemonicParsing="false" onAction="#eliminarSeleccion" prefHeight="25.0" prefWidth="224.0" text="Elimnar Selección" textFill="RED" />
+               </children></AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Estadistica">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="listViewEquiposGoles" layoutX="23.0" layoutY="16.0" prefHeight="135.0" prefWidth="301.0" />
+                  <ListView fx:id="listViewEquiposMasGanadores" layoutX="351.0" layoutY="72.0" prefHeight="135.0" prefWidth="301.0" />
+                  <Text layoutX="23.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipos con mejor diferencia de goles" textAlignment="CENTER" wrappingWidth="159.064453125">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="380.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipos con mayor cantidad de partidos ganados" textAlignment="CENTER" wrappingWidth="243.064453125">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="223.0" layoutY="175.0" mnemonicParsing="false" onAction="#listarEquipos" text="Listar Equipos" />
+               </children></AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>
