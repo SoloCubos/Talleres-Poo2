@@ -31,7 +31,7 @@ public class Supermercado {//Clase Fachada
         Bolsa b = new Bolsa();
         b.setReferencia(referencia);
         b.setVolumen(Integer.parseInt(volumen));
-        b.set
+        //b.set
         b.setAncho(ancho);
         
         contenedores.add(b);

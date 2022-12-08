@@ -71,26 +71,22 @@ public class Feligres {
     }
 
     public int getDiezmo() {
+        if(getEstado().equals("Deudor")){
+            if(getEstrato() <= 1){
+                diezmo = 250000;
+            }if(getEstrato() > 1 && getEstrato() <= 3){
+                diezmo = 500000;
+            }if(getEstrato() > 3){
+                diezmo = 1000000;
+            }
+        }
         return diezmo;
     }
 
     public void setDiezmo(int diezmo) {
         this.diezmo = diezmo;
     }
-    
-    public void calcularDiezmo(){
-        System.out.println(getEstrato());
-        if(getEstado().equals("Deudor")){
-            if(getEstrato() <= 1){
-                setDiezmo(250000);
-            }if(getEstrato() > 1 && getEstrato() <= 3){
-                setDiezmo(500000);
-            }if(getEstrato() > 3){
-                setDiezmo(1000000);
-            }
-        }
-    }
-    
+  
     public String toString(){       
         return "Feligrés: " + getNombre() + ". CC: " + getCedula() + ". Estado: " + getEstado();
     }

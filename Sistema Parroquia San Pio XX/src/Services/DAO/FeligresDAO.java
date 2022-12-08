@@ -19,7 +19,8 @@ import java.util.ArrayList;
  * @author Solan
  */
 public class FeligresDAO {
-    public Boolean buscarCedula(String cedula){
+    
+    public Boolean existeFeligres(String cedula){
         try{
             Connection conexion = Conexion.obtener();
             PreparedStatement consulta;
@@ -27,12 +28,12 @@ public class FeligresDAO {
             consulta = conexion.prepareStatement("SELECT * FROM feligres WHERE cedula = " + cedula);        
 
             ResultSet rs = consulta.executeQuery();
-            if(rs.next()){
+            if(rs.getString(cedula)== "cedula"){
                 return true;
-            }
+            }else return false;
             
         }catch(SQLException | ClassNotFoundException ex){
-            System.out.println(ex);
+            System.out.println(ex + " Error consultando existencia feligres");
         }return false;
     }
     
@@ -55,12 +56,12 @@ public class FeligresDAO {
             
             return true;
         }catch(SQLException | ClassNotFoundException ex){
-            System.out.println(ex);     
+            System.out.println(ex + " Error guardando feligres");     
             return false;
         }
     }  
     
-    public Feligres mostrarDatosFeligres(String cedula){
+    public Feligres cargarDatosFeligres(String cedula){
         try{
             Feligres f = new Feligres();
             Connection conexion = Conexion.obtener();
@@ -79,7 +80,7 @@ public class FeligresDAO {
             }
             return f;
         }catch(SQLException | ClassNotFoundException ex){
-            System.out.println(ex);
+            System.out.println(ex + " Error cargando feligres");
             return null;
         } 
     }
@@ -101,22 +102,23 @@ public class FeligresDAO {
             
             return true;
         }catch(SQLException | ClassNotFoundException ex){
-            System.out.println(ex);
+            System.out.println(ex + " Error actualizando feligres");
             return false;
         }
     }
     
-    public ArrayList<Feligres> mostrarFeligreses(String cedula){
+    public ArrayList<Feligres> cargarFeligreses(){
         try{
-            Feligres f = new Feligres();
+            
             ArrayList<Feligres> fA = new ArrayList<>();
             Connection conexion = Conexion.obtener();
             PreparedStatement consulta;
-            consulta = conexion.prepareStatement("SELECT * FROM registro");        
+            consulta = conexion.prepareStatement("SELECT * FROM feligres");        
             ResultSet rs = consulta.executeQuery();
             
             
             while(rs.next()){
+                Feligres f = new Feligres();
                 f.setCedula(rs.getString("cedula"));
                 f.setNombre(rs.getString("nombre"));
                 f.setDireccion(rs.getString("direccion"));
@@ -125,14 +127,31 @@ public class FeligresDAO {
                 f.setEstado(rs.getString("estado"));
                 f.setDiezmo(rs.getInt("diezmo"));
                 fA.add(f);
+                System.out.println(f.toString());
             }
             return fA;
         }catch(SQLException | ClassNotFoundException ex){
-            System.out.println(ex);
+            System.out.println(ex + " Error cargando feligreses");
             return null;
         }
-        
-       
+    }
+    
+    public boolean pagar(Feligres f){
+        try{
+            Connection conexion = Conexion.obtener();
+            PreparedStatement consulta;
+            
+            consulta = conexion.prepareStatement("UPDATE feligres SET estado = " + f.getEstado() + 
+                                                                   ", diezmo = " + f.getDiezmo() +
+                                                                   "WHERE cedula = " + f.getCedula());       
+            
+            consulta.executeUpdate();
+            
+            return true;
+        }catch(SQLException | ClassNotFoundException ex){
+            System.out.println(ex + " Error pagando");
+            return false;
+        }
     }
     
     public boolean eliminar(String cedula){
@@ -143,8 +162,28 @@ public class FeligresDAO {
             consulta.executeUpdate();
             return true;
         }catch(SQLException | ClassNotFoundException ex){
-            System.out.println(ex);
+            System.out.println(ex + " Error eliminando feligres");
             return false;
+        }
+    }
+    
+    public int totalizar(){
+        try{
+            int totalDiezmos = 0;            
+            Connection conexion = Conexion.obtener();
+            PreparedStatement consulta;
+            consulta = conexion.prepareStatement("SELECT * FROM feligres");        
+            ResultSet rs = consulta.executeQuery();
+            
+            while(rs.next()){
+                
+                totalDiezmos = totalDiezmos + rs.getInt("diezmo");
+                
+            }return totalDiezmos;
+            
+        }catch(SQLException | ClassNotFoundException ex){
+            System.out.println(ex + " Error totalizando");
+            return 0;
         }
     }
 }

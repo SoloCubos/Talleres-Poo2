@@ -50,8 +50,10 @@ public class Qatar2022 {
         ContinenteDAO CDAO = new ContinenteDAO();
         Continente c = new Continente();
         
-        c = CDAO.getContinente(Integer.parseInt(continenteId.charAt(0) + ""));
         
+        
+        c = CDAO.getContinente(Integer.parseInt(continenteId.charAt(0) + ""));
+          
         s.setId(Integer.parseInt(id));
         s.setNombre(nombre);
         s.setContinente(c);
@@ -65,12 +67,14 @@ public class Qatar2022 {
         return DAO.guardar(s);
     }
     
-    public boolean acrualizarSeleccion(String id, String nombre, String continenteId, String tecnico, String golesFavor, String golesContra, String partidosGanados, String partidosPerdidos, String partidosJugados){
+    public boolean actualizarSeleccion(String id, String nombre, String continenteId, String tecnico, String golesFavor, String golesContra, String partidosGanados, String partidosPerdidos, String partidosJugados){
         
         Seleccion s = new Seleccion();
         SeleccionDAO DAO = new SeleccionDAO();
         ContinenteDAO CDAO = new ContinenteDAO();
         Continente c = new Continente();
+        
+        System.out.println(continenteId.charAt(0) + "");
         
         c = CDAO.getContinente(Integer.parseInt(continenteId.charAt(0) + ""));
         
@@ -111,5 +115,43 @@ public class Qatar2022 {
     public boolean eliminarSeleccion(String id){
         SeleccionDAO DAO = new SeleccionDAO();
         return DAO.eliminar(Integer.parseInt(id.charAt(4) + ""));
+    }
+    
+    public ArrayList<String> mejoresEquiposDifGoles(){
+        ArrayList<String> sA = new ArrayList<>();
+        SeleccionDAO DAO = new SeleccionDAO();
+        float promedioGoles = 0;
+        if (DAO.listaSelecciones() != null){
+            for (int i = 0; i < DAO.listaSelecciones().size(); i++) {              
+                promedioGoles = (promedioGoles + (DAO.listaSelecciones().get(i).getGolesFavor() - DAO.listaSelecciones().get(i).getGolesContra())) / DAO.listaSelecciones().size();
+            }
+            for (int i = 0; i < DAO.listaSelecciones().size(); i++) {              
+                if(DAO.listaSelecciones().get(i).getGolesFavor() - DAO.listaSelecciones().get(i).getGolesContra() > promedioGoles){
+                    sA.add(DAO.listaSelecciones().get(i).toString());
+                }
+            }
+        }if(!sA.isEmpty()) return sA;
+        
+        else return null;
+    }
+    
+    public ArrayList<String> mejoresEquiposPartidosGanados(){
+        ArrayList<String> sA = new ArrayList<>();
+        SeleccionDAO DAO = new SeleccionDAO();
+        float promedioPartidosGanados = 0;
+        if (DAO.listaSelecciones() != null){
+            for (int i = 0; i < DAO.listaSelecciones().size(); i++) {   
+                
+                promedioPartidosGanados = (promedioPartidosGanados + DAO.listaSelecciones().get(i).getPartidosGanados()) / DAO.listaSelecciones().size();
+            }
+            for (int i = 0; i < DAO.listaSelecciones().size(); i++) {    
+                
+                if(DAO.listaSelecciones().get(i).getPartidosGanados() > promedioPartidosGanados){
+                    sA.add(DAO.listaSelecciones().get(i).toString());
+                }
+            }
+        }if(!sA.isEmpty()) return sA;
+        
+        else return null;
     }
 }

@@ -29,6 +29,8 @@ public class FormularioController implements Initializable {
     @FXML
     private TextField txtPague;
     @FXML
+    private TextField txtTotal;
+    @FXML
     private ListView<String> myListView;
     @FXML
     private TextField txtCedula;
@@ -55,23 +57,20 @@ public class FormularioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         txtPague.setEditable(false);
         cmbEstado.getItems().addAll("Deudor","Cumplido");
+        myListView.getItems().addAll(p.resultados());
         // TODO
     }    
 
     @FXML
     private void handleActionConsultar(ActionEvent event) {
         if(txtCelula.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Introduzca la cedula para conocer cuanto debe pagar", "Error!!!", JOptionPane.ERROR_MESSAGE);
-        }else if(p.cedulaExiste(txtCelula.getText())){
-                String pagar = p.consultar(txtCelula.getText());
-                JOptionPane.showMessageDialog(null, "Consulta Exitosa, acontinuacion puede pagar", "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-                txtPague.setText(pagar);
+            JOptionPane.showMessageDialog(null, "Introduzca la cedula para conocer cuanto debe pagar", "Error!!!", JOptionPane.ERROR_MESSAGE);
+            
         }else{
-            txtCedula.setText(txtCelula.getText());
-            txtCelula.clear();
-            JOptionPane.showMessageDialog(null, "El feligrés no existe, registrelo", "Error!!!", JOptionPane.ERROR_MESSAGE);
-        }
-   
+            String pagar = p.consultar(txtCelula.getText());
+            JOptionPane.showMessageDialog(null, "Consulta Exitosa, acontinuacion puede pagar", "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+            txtPague.setText(pagar);
+        } 
     }
 
     @FXML
@@ -96,12 +95,9 @@ public class FormularioController implements Initializable {
     @FXML
     private void handleActionTotalizar(ActionEvent event) {
 
-        txtCelula.clear();
         int total = p.totalizar();
-        txtPague.setText("$" + total);
-        JOptionPane.showMessageDialog(null, "La parroquia ha recibido $" + total + " por los diezmos pagados", "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-
-
+        txtTotal.setText("$ " + total);
+        JOptionPane.showMessageDialog(null, "La parroquia ha recibido $ " + total + " por los diezmos pagados", "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @FXML
@@ -128,10 +124,17 @@ public class FormularioController implements Initializable {
 
     @FXML
     private void handleActionEliminar(ActionEvent event) {
+        txtDireccion.clear();
+        txtTelefono.clear();
+        txtEstrato.clear();
+        cmbEstado.setValue(null);
+        
         if(!txtCedula.getText().isEmpty()){
             if(p.cedulaExiste(txtCedula.getText())){
                 p.eliminar(txtCedula.getText());
+                
                 JOptionPane.showMessageDialog(null, "Se ha eliminado correctamente el feligrés", "Operación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+                
                 txtCedula.clear();
                 txtNombre.clear();
                 txtDireccion.clear();

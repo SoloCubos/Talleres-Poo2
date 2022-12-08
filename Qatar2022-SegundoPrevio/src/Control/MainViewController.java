@@ -6,6 +6,7 @@
 package Control;
 
 import Model.Qatar2022;
+import java.awt.HeadlessException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -189,7 +190,7 @@ public class MainViewController implements Initializable {
             
             JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios", "Error!!!", 0);
             
-        }else if(q.registrarSeleccion(txtIdSeleccion1.getText(), txtNombreSeleccion1.getText(), cmbContinentes1.getValue(), txtTecnico1.getText(), txtGolesFavor1.getText(), txtGolesContra1.getText(), txtPartidosGanados1.getText(), txtPartidosPerdidos1.getText(), txtPartidosJugados1.getText())){
+        }else if(q.actualizarSeleccion(cmbIdSelecciones.getValue(), txtNombreSeleccion11.getText(), cmbContinentes11.getValue(), txtTecnico11.getText(), txtGolesFavor11.getText(), txtGolesContra11.getText(), txtPartidosGanados11.getText(), txtPartidosPerdidos11.getText(), txtPartidosJugados11.getText())){
             
             JOptionPane.showMessageDialog(null, "Se han actualizado los Datos de la seleccion", "Exito!!", 1);
             cmbIdSelecciones.getItems().clear();
@@ -213,13 +214,14 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void listarSelecciones(ActionEvent event) {
+        myListView.getItems().clear();
         myListView.getItems().addAll(q.listaSeleccionesLarga());
     }
 
     @FXML
     private void eliminarSeleccion(ActionEvent event) {
         
-        if(cmbSeleccionesEliminar.getValue().isEmpty()){
+        if(cmbSeleccionesEliminar.getValue() == null){
             
             JOptionPane.showMessageDialog(null, "Seleccione una Seleccion", "Error!!!", 0);
             
@@ -239,6 +241,17 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void listarEquipos(ActionEvent event) {
+        
+        try{
+            
+            listViewEquiposGoles.getItems().clear();
+            listViewEquiposMasGanadores.getItems().clear();
+            listViewEquiposGoles.getItems().addAll(q.mejoresEquiposDifGoles());
+            listViewEquiposMasGanadores.getItems().addAll(q.mejoresEquiposPartidosGanados());
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "No suficientes equipos en la base de datos (" + ex + ")" ,"Error!!", 0);
+        }
         
     }  
 }

@@ -65,10 +65,10 @@ public class RegistrarDatosController implements Initializable{
                 for (int j = 0; j < transito.getListaPropietarios().get(i).getVehiculos().size(); j++) {
                     if(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPlaca().equals(cmbPlaca.getValue())){
                         txtNombre.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getNombre());
-                        txtApellido.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getApellido());
-                        txtNombre.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getNombre());
-                        txtNombre.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getNombre());
-                        txtNombre.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getNombre());
+                        txtApellido.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getApellidos());
+                        txtCedula.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getCedula());
+                        txtCelular.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getCelular());
+                        txtCorreo.setText(transito.getListaPropietarios().get(i).getVehiculos().get(j).getPropietario().getCorreo());
                     }  
                 }
             }
@@ -77,7 +77,7 @@ public class RegistrarDatosController implements Initializable{
     }    
 
     @FXML
-    void handleButtonActionActualizarDatosVehiculo(ActionEvent event) {
+    void handleButtonActionActualizarDatos(ActionEvent event) {
         
     }
 
@@ -95,5 +95,10 @@ public class RegistrarDatosController implements Initializable{
         }else{
             
         }
+    }
+    
+    @FXML
+    void handleAgregarVehiculo(ActionEvent event){
+        
     }
 }
